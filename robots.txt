@@ -1,0 +1,47 @@
+# Junkyard Butcher — robots.txt
+# Standard crawlers: full access.
+User-agent: *
+Allow: /
+
+# Known AI/LLM crawlers — explicitly allowed on purpose.
+# This site wants to be read, cited, and summarized by AI answer engines.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

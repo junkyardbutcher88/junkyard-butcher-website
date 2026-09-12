@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philosophy — Junkyard Butcher</title>
+<meta name="description" content="The belief system behind Junkyard Butcher: the 7-11-4 and 80/20 hybrid frameworks in full, the thinking on authenticity over AI slop, and the influences behind the work.">
+<link rel="canonical" href="https://example.com/philosophy.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Philosophy — Junkyard Butcher">
+<meta property="og:description" content="The belief system behind Junkyard Butcher: the 7-11-4 and 80/20 hybrid frameworks in full, the thinking on authenticity over AI slop, and the influences behind the work.">
+<meta property="og:url" content="https://example.com/philosophy.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Philosophy — Junkyard Butcher">
+<meta name="twitter:description" content="The belief system behind Junkyard Butcher, in full.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔪</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Junkyard Butcher",
+  "url": "https://example.com/philosophy.html",
+  "description": "Junkyard Butcher provides content creation, email & SMS marketing, brand identity systems, and brand strategy systems, built around the 7-11-4 and 80/20 hybrid frameworks.",
+  "founder": {
+    "@type": "Person",
+    "name": "Gabe"
+  },
+  "knowsAbout": [
+    "Brand Strategy",
+    "Brand Identity Design",
+    "Content Creation",
+    "Video Production",
+    "Email Marketing",
+    "SMS Marketing",
+    "Event Recap Video"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Junkyard Butcher actually do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four things, applied together instead of handed off between separate vendors: content creation (video and social, especially event recap), email & SMS marketing, brand identity systems, and brand strategy systems. Most client work has been event recap and social content for cannabis and events brands; one engagement (CVALT) covered the entire marketing and creative department."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 7-11-4 framework?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A rule of thumb for how much trust a buyer needs before they purchase: roughly seven hours of content, across eleven touchpoints, on four different platforms. It is used to plan content and lifecycle touchpoints on purpose instead of leaving reach to chance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the 80/20 hybrid model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An application of the Pareto principle to existing brand assets: audit what already exists, identify the roughly twenty percent of content, formats, or flows driving most of the results, and double down there before creating anything net-new."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Junkyard Butcher use AI tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Where they genuinely help, yes, but direction, editing, and final judgment stay human on every deliverable. The standard is not \"no AI\" -- it is no unconsidered output, so nothing ships that was not actually thought through."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of brands is this a fit for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brands that care about craft and authenticity over churning out volume. Much of the past work has been cannabis delivery, dispensary, and events brands, but the frameworks and services are not industry-specific."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from a typical agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One operator working across content, identity, and lifecycle marketing instead of a project split across siloed teams, using a systems-driven process (the 7-11-4 and 80/20 hybrid) instead of an ad hoc one."
+      }
+    }
+  ]
+}
+</script>
+<style>
+
+  /* ============ TOKENS ============ */
+  :root{
+    --ink: #0c0c0a;
+    --iron: #18170f;
+    --iron-2: #201f16;
+    --bone: #ece6d8;
+    --bone-dim: #cfc8b6;
+    --smoke: #8a8371;
+    --acid: #c9ff3f;
+    --rust: #ff5b23;
+    --line: rgba(236,230,216,0.16);
+    --line-strong: rgba(236,230,216,0.32);
+    --ghost: rgba(236,230,216,0.055);
+
+    --fs-display: clamp(3rem, 11.5vw, 9.5rem);
+    --fs-h1: clamp(2.1rem, 6vw, 4.2rem);
+    --fs-h2: clamp(1.5rem, 3.6vw, 2.4rem);
+    --fs-h3: clamp(1.15rem, 2.4vw, 1.5rem);
+    --fs-lead: clamp(1.05rem, 1.6vw, 1.3rem);
+    --fs-body: 1rem;
+    --fs-label: 0.74rem;
+
+    --gutter: clamp(20px, 5vw, 64px);
+    --maxw: 1320px;
+
+    --font-display: "Anton", "Arial Narrow", sans-serif;
+    --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  }
+
+  /* Junkyard Butcher is a committed dark-canvas punk-flyer identity —
+     one visual world by design, painted explicitly on every host theme. */
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--font-body);
+    font-size:var(--fs-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{ max-width:100%; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--acid); color:var(--ink); }
+
+  html{
+    scrollbar-color:var(--iron-2) var(--ink);
+    scrollbar-width:thin;
+  }
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-track{ background:var(--ink); }
+  ::-webkit-scrollbar-thumb{ background:var(--iron-2); border:2px solid var(--ink); }
+  ::-webkit-scrollbar-thumb:hover{ background:var(--smoke); }
+
+  /* ============ CUSTOM CURSOR + PROGRESS ============ */
+  .progress-bar{
+    position:fixed; top:0; left:0;
+    height:2px; width:100%;
+    background:var(--acid);
+    transform:scaleX(0);
+    transform-origin:left center;
+    z-index:1001;
+    pointer-events:none;
+  }
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:1000;
+    transform:translate(-50%,-50%);
+  }
+  .cursor-dot{
+    width:6px; height:6px;
+    background:var(--acid);
+  }
+  .cursor-ring{
+    width:34px; height:34px;
+    border:1px solid var(--line-strong);
+    transition:width .2s ease, height .2s ease, border-color .2s ease, background-color .2s ease;
+  }
+  .cursor-ring.is-active{
+    width:64px; height:64px;
+    border-color:var(--acid);
+  }
+  html.has-custom-cursor body{ cursor:none; }
+  html.has-custom-cursor a,
+  html.has-custom-cursor button{ cursor:none; }
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea{ cursor:text; }
+
+  /* ============ SLUG LABELS ============ */
+  .slug{
+    position:fixed;
+    top:50%;
+    writing-mode:vertical-rl;
+    font-family:var(--font-mono);
+    font-size:0.64rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--smoke);
+    opacity:0.6;
+    z-index:40;
+    pointer-events:none;
+  }
+  .slug-left{ left:12px; transform:translateY(-50%) rotate(180deg); }
+  .slug-right{ right:12px; transform:translateY(-50%); }
+  @media (max-width:980px){ .slug{ display:none; } }
+
+  /* ============ FILM REEL DIVIDER ============ */
+  .cutline{
+    height:15px;
+    position:relative;
+    background-color:var(--iron-2);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='15'%3E%3Crect x='9' y='3.5' width='10' height='8' rx='2' fill='%230c0c0a'/%3E%3C/svg%3E");
+    background-repeat:repeat-x;
+    background-position:left center;
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+    overflow:hidden;
+  }
+  .cutline::after{
+    content:"";
+    position:absolute; inset:0;
+    opacity:0.3;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+
+  h1,h2,h3,p{ margin:0; text-wrap:balance; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin-inline:auto;
+    padding-inline:var(--gutter);
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:var(--fs-label);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--acid);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    background:var(--rust);
+    display:inline-block;
+    flex:none;
+  }
+
+  /* ============ GRAIN OVERLAY ============ */
+  .grain{
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:999;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(12,12,10,0.86);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:16px;
+  }
+  .nav-mark{
+    font-family:var(--font-display);
+    font-size:1.3rem;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:10px;
+  }
+  .nav-mark .cut{ color:var(--rust); }
+  .nav-links{
+    display:flex; gap:clamp(14px,2.4vw,32px);
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s, color .15s;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    color:var(--acid);
+    border-color:var(--acid);
+    outline:none;
+  }
+  .nav-toggle{
+    display:none;
+    align-items:center; gap:8px;
+    background:none;
+    border:1px solid var(--line-strong);
+    color:var(--bone);
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:9px 14px;
+    cursor:pointer;
+  }
+  .nav-toggle:hover, .nav-toggle:focus-visible{ border-color:var(--acid); color:var(--acid); outline:none; }
+  @media (max-width:760px){
+    .nav-toggle{ display:inline-flex; }
+    .nav-mark{ font-size:1.05rem; }
+    .nav > .link-cta.quiet{ display:none; }
+    .nav-links{
+      display:none;
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:rgba(12,12,10,0.98);
+      border-bottom:1px solid var(--line);
+      padding:4px var(--gutter) 18px;
+    }
+    .nav-links.is-open{ display:flex; }
+    .nav-links a{
+      padding-block:14px;
+      border-bottom:1px solid var(--line);
+    }
+  }
+
+  /* ============ GHOST LINKS (no filled buttons anywhere) ============ */
+  .link-cta{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:none;
+    border:none;
+    padding:0 0 4px;
+    margin:0;
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--bone);
+    cursor:pointer;
+  }
+  .link-cta::after{
+    content:"";
+    position:absolute;
+    left:0; right:100%;
+    bottom:0;
+    height:1px;
+    background:currentColor;
+    transition:right .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .link-cta:hover, .link-cta:focus-visible{ color:var(--acid); outline:none; }
+  .link-cta:hover::after, .link-cta:focus-visible::after{ right:0; }
+  .link-cta.primary{ color:var(--acid); }
+  .link-cta.quiet{ font-size:0.78rem; letter-spacing:0.06em; }
+
+  /* ============ SECTION SHELL ============ */
+  section{ padding-block:clamp(64px,10vw,120px); }
+  .section-title{
+    font-family:var(--font-display);
+    font-size:var(--fs-h1);
+    text-transform:uppercase;
+    line-height:0.95;
+    margin-top:14px;
+  }
+  .section-title::after{
+    content:"";
+    display:block;
+    width:56px;
+    height:3px;
+    background:var(--rust);
+    margin-top:20px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding-block:36px;
+  }
+  .foot-grid{
+    display:flex; flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+  }
+  .foot-mark{
+    font-family:var(--font-display);
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .foot-links{
+    display:flex; flex-wrap:wrap; gap:20px;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--smoke);
+  }
+  .foot-links a:hover, .foot-links a:focus-visible{ color:var(--acid); outline:none; }
+  .foot-copy{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    color:var(--smoke);
+  }
+
+
+
+  /* ============ ARTICLE / ESSAY LAYOUT ============ */
+  .essay-layout{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:clamp(32px,6vw,80px);
+    align-items:start;
+    padding-block:clamp(48px,8vw,88px);
+  }
+  @media (max-width:900px){ .essay-layout{ grid-template-columns:1fr; } }
+
+  .essay-pull-img{
+    float:right;
+    width:min(220px,40%);
+    margin:4px 0 16px 28px;
+    border:1px solid var(--line);
+    background:var(--iron-2);
+    padding:8px;
+  }
+  .essay-pull-img img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .essay-pull-img figcaption{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    color:var(--smoke);
+    margin-top:8px;
+    line-height:1.4;
+  }
+  @media (max-width:560px){
+    .essay-pull-img{ float:none; width:min(260px,100%); margin:16px auto; }
+  }
+
+  .toc{ position:sticky; top:100px; }
+  @media (max-width:900px){ .toc{ position:static; margin-bottom:8px; } }
+  .toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    counter-reset:toc;
+    display:flex; flex-direction:column;
+    gap:13px;
+  }
+  .toc li{ counter-increment:toc; }
+  .toc li a{
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    color:var(--bone-dim);
+    transition:color .15s ease;
+  }
+  .toc li a::before{
+    content:counter(toc,decimal-leading-zero) " \2014 ";
+    color:var(--rust);
+  }
+  .toc li a:hover, .toc li a:focus-visible{ color:var(--acid); outline:none; }
+
+  .essay article{
+    padding-bottom:clamp(36px,6vw,56px);
+    margin-bottom:clamp(36px,6vw,56px);
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:100px;
+  }
+  .essay article:last-of-type{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .essay h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem,3.2vw,2.3rem);
+    text-transform:uppercase;
+    line-height:1.05;
+    margin-bottom:22px;
+  }
+  .essay p{
+    color:var(--bone-dim);
+    max-width:68ch;
+    margin-bottom:18px;
+  }
+  .essay p:last-child{ margin-bottom:0; }
+  .essay p strong{ color:var(--bone); font-weight:600; }
+  .essay p.lead{ font-size:1.05rem; color:var(--bone); }
+
+  /* ============ FAQ ============ */
+  .faq-list{ border-top:1px solid var(--line-strong); }
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    padding-block:24px;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+    font-family:var(--font-mono);
+    font-size:0.92rem;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    color:var(--bone);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:"+";
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    line-height:1;
+    color:var(--rust);
+    flex:none;
+  }
+  .faq-item[open] summary::after{ content:"\2013"; }
+  .faq-item summary:hover, .faq-item summary:focus-visible{ color:var(--acid); outline:none; }
+  .faq-item .faq-a{
+    color:var(--bone-dim);
+    max-width:68ch;
+    padding-bottom:26px;
+    margin:0;
+  }
+
+  .breadcrumb{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--smoke);
+  }
+  .breadcrumb a{ color:var(--smoke); transition:color .15s; }
+  .breadcrumb a:hover, .breadcrumb a:focus-visible{ color:var(--acid); outline:none; }
+
+  .closing-cta{
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+    padding-block:clamp(40px,6vw,64px);
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px;
+  }
+  .closing-cta h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.8rem,4.5vw,3rem);
+    text-transform:uppercase;
+    line-height:1;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<span class="slug slug-left">Junkyard Butcher &mdash; Est. Now</span>
+<span class="slug slug-right">Cut to Order &mdash; No. 001</span>
+
+<header>
+  <nav class="nav wrap">
+    <a href="index.html" class="nav-mark"><span class="cut">/</span>Junkyard Butcher</a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#services">Services</a>
+      <a href="philosophy.html" aria-current="page">Philosophy</a>
+      <a href="index.html#join">Join</a>
+      <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <a href="index.html#join" class="link-cta quiet">Start a conversation</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="wrap" style="padding-block: clamp(48px,8vw,88px) clamp(32px,5vw,48px);">
+    <p class="breadcrumb"><a href="index.html">Junkyard Butcher</a> &nbsp;/&nbsp; Philosophy</p>
+    <div class="eyebrow" style="margin-top:20px;">The Full Read</div>
+    <h1 class="section-title" style="font-size:clamp(2.6rem,7.5vw,5.2rem); margin-top:16px;">The Philosophy</h1>
+    <p class="hero-sub" style="margin-top:26px; max-width:680px;">
+      The homepage gives you the pitch. This page gives you the reasoning underneath it — why the
+      frameworks look the way they do, where the taste comes from, and what we actually believe about
+      the work. If you're deciding whether this is a fit, or you're just doing your homework, start here.
+    </p>
+    <a href="#faq" class="link-cta quiet" style="margin-top:30px;">Skip to the FAQ ↓</a>
+  </section>
+
+  <div class="cutline" aria-hidden="true"></div>
+
+  <section class="wrap essay-layout">
+    <nav class="toc" aria-label="Table of contents">
+      <div class="eyebrow" style="margin-bottom:16px;">On This Page</div>
+      <ol>
+        <li><a href="#name">Why Junkyard. Why Butcher.</a></li>
+        <li><a href="#belief">The Belief: Dig Before You Buy</a></li>
+        <li><a href="#authenticity">Authenticity Isn't a Filter</a></li>
+        <li><a href="#audience">Audience, Not Algorithm</a></li>
+        <li><a href="#framework-1">The 7-11-4, In Full</a></li>
+        <li><a href="#framework-2">The 80/20 Hybrid, In Full</a></li>
+        <li><a href="#gear">Minimal Gear, Maximum Intent</a></li>
+        <li><a href="#ai">Craft In The Age Of AI</a></li>
+        <li><a href="#influences">Where This Comes From</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ol>
+    </nav>
+
+    <div class="essay">
+
+      <article id="name">
+        <h2>Why Junkyard. Why Butcher.</h2>
+        <figure class="essay-pull-img">
+          <img src="assets/gabe_portrait.jpg" alt="Gabe, founder of Junkyard Butcher" loading="lazy">
+          <figcaption>Gabe — one operator, one department, no vendors who've never spoken to each other.</figcaption>
+        </figure>
+        <p class="lead">The name is two trades stitched together on purpose.</p>
+        <p>
+          A junkyard is where things go to be judged worthless — until someone who actually knows what
+          they're looking at walks the rows and finds the part that still runs. A butcher doesn't create
+          the animal; the value was already there, marbled through it. The job is knowing exactly where
+          to cut so nothing good gets thrown out with the waste.
+        </p>
+        <p>
+          Put those together and you get the whole approach: we don't manufacture value out of nothing,
+          and we're not going to sell you on the idea that you need something entirely new. Most of the
+          time, you don't. You need someone willing to go through what you've already built — old posts,
+          an abandoned list, a logo nobody's touched in three years, a customer base nobody's actually
+          talked to — and find the parts worth keeping. Then cut away the rest with intent.
+        </p>
+      </article>
+
+      <article id="belief">
+        <h2>The Belief: Dig Before You Buy</h2>
+        <p>
+          Most marketing spend goes toward acquiring something new — a new logo, a new content pillar, a
+          new platform presence — before anyone has actually audited what's already there. That's
+          backwards, and it's expensive. It's how brands end up with five years of content nobody's
+          revisited, an email list that's never been segmented, and a rebrand every eighteen months
+          because nothing ever gets the chance to compound.
+        </p>
+        <p>
+          The alternative is a discipline, not a vibe: audit first. Before a single new asset gets made,
+          go through what already exists and grade it honestly. Some of it is scrap. Some of it is the
+          load-bearing wall of the entire brand and nobody noticed. You don't find out which is which
+          without digging — and most agencies skip straight to building because building is what they
+          bill for.
+        </p>
+      </article>
+
+      <article id="authenticity">
+        <h2>Authenticity Isn't a Filter</h2>
+        <p>
+          The output here is loud, gritty, a little psychedelic, occasionally too dark for a pitch deck
+          — and intentionally, unapologetically not perfect. That's not an aesthetic bolted on after the
+          fact. Polish is easy to fake, and increasingly cheap to fake at scale — anyone can generate a
+          clean, symmetrical, on-brand post in thirty seconds now. What's hard to fake is texture: the
+          rough edge that tells a real person made a real decision.
+        </p>
+        <p>
+          That's the bet — that in a feed full of interchangeable polish, the thing that actually earns
+          attention is the thing that couldn't have been generated by anyone else's brand. Remarkable, in
+          the literal sense: worth making a remark about. Smoothing that away in the name of "on-brand"
+          consistency is how most brands end up sounding like every other brand in their category.
+        </p>
+      </article>
+
+      <article id="audience">
+        <h2>Audience, Not Algorithm</h2>
+        <p>
+          There's a difference between broadcasting at an audience and building with one, and most brand
+          content still does the former — post, hope the algorithm cooperates, repeat. The community-first
+          approach is slower to set up and faster to compound: let the people already paying attention
+          feel like they're part of the build, not spectators watching a finished product get announced.
+        </p>
+        <p>
+          Practically, that means meeting people where they already are instead of demanding they come to
+          you — in the inbox, on the phone, in the room at an event — rather than betting everything on
+          one feed's mood that week. A smaller group that actually shows up beats a larger one that
+          scrolls past.
+        </p>
+      </article>
+
+      <article id="framework-1">
+        <h2>The 7-11-4, In Full</h2>
+        <p>
+          The short version, from the homepage: a buyer needs roughly seven hours of content, across
+          eleven touchpoints, on four different platforms, before they trust a brand enough to hand over
+          money. It's a rule of thumb, not a law of physics — but it's a useful one, because it explains
+          why a single great post rarely converts anything on its own.
+        </p>
+        <p>
+          In practice, that means planning touchpoints on purpose instead of leaving them to chance: an
+          event recap video that also becomes three social cuts and an email send; an SMS flow that picks
+          up where the inbox left off; a presence across enough different channels that a prospective
+          client runs into the brand more than once before they ever reach out. The frameworks aren't
+          about producing more content — they're about making sure the content that already exists is
+          actually stacking toward something instead of disappearing into a single feed the day it posts.
+        </p>
+      </article>
+
+      <article id="framework-2">
+        <h2>The 80/20 Hybrid, In Full</h2>
+        <p>
+          Twenty percent of what a brand already does drives eighty percent of its results. That's true
+          of content formats, of email flows, of entire product lines — and almost no one has actually
+          measured which twenty percent it is for them.
+        </p>
+        <p>
+          So before anything new gets created, the existing library gets audited against real numbers:
+          which recap videos actually got watched to the end, which email sends actually got opened and
+          clicked, which single post quietly outperformed everything else that quarter. That twenty
+          percent gets doubled down on, refined, and repeated on purpose. Everything else gets cut loose
+          — not because it was bad, necessarily, but because attention and budget both compound faster
+          when they're concentrated instead of spread thin trying to maintain everything at once.
+        </p>
+      </article>
+
+      <article id="gear">
+        <h2>Minimal Gear, Maximum Intent</h2>
+        <figure class="essay-pull-img">
+          <img src="assets/skate_frame.jpg" alt="A skateboard on cracked asphalt, casting a long shadow" loading="lazy">
+          <figcaption>Same instinct as the work: one board, no team, find the line and commit to it.</figcaption>
+        </figure>
+        <p>
+          Gear stays minimal by choice. Limitations sharpen a creative decision instead of dulling it —
+          when you can't solve a problem by throwing more equipment at it, you have to actually think
+          about the shot, the sequence, the send. A lot of expensive gear exists to compensate for a lack
+          of a plan.
+        </p>
+        <p>
+          That said, this isn't a purity test. When a job genuinely calls for the right tool — a specific
+          lens, a specific platform, a specific piece of software — it gets used. No exceptions, no ego
+          about it either way. The constraint is a tool for better decisions, not a personality.
+        </p>
+      </article>
+
+      <article id="ai">
+        <h2>Craft In The Age Of AI</h2>
+        <p>
+          The honest position: tools are fine. Tools have always been fine. What erodes trust isn't the
+          existence of AI in a workflow — it's shipping something nobody actually thought about, dressed
+          up to look considered. That's what "AI slop" actually means here: not the technology, the
+          absence of judgment.
+        </p>
+        <p>
+          The standard stays the same regardless of what's in the toolkit: does a real decision sit behind
+          this, or did it get templated and pushed out the door because templating is faster? Cut to
+          order, not off the rack — whatever's doing the cutting.
+        </p>
+      </article>
+
+      <article id="influences">
+        <h2>Where This Comes From</h2>
+        <p>
+          Two influences show up constantly in how this business actually runs, not just how it talks
+          about itself.
+        </p>
+        <p>
+          <strong>Chris Do</strong> — for treating creative work like an actual business instead of a
+          vanity project. Charging for value instead of hours, understanding the client's real problem
+          before proposing a solution, and taking the business side of "creative" as seriously as the
+          creative side. A lot of talented people undercharge and overdeliver until they burn out; that
+          framing is the antidote.
+        </p>
+        <p>
+          <strong>Seth Godin</strong> — for permission marketing, the smallest viable audience, and the
+          idea that "remarkable" means literally worth making a remark about. Godin's whole body of work
+          argues against interrupting strangers and for earning attention from people who actually opted
+          in. The community-over-audience approach described above is that idea applied directly.
+        </p>
+      </article>
+
+      <article id="faq">
+        <h2>Frequently Asked</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What does Junkyard Butcher actually do?</summary>
+            <p class="faq-a">
+              Four things, applied together instead of handed off between separate vendors: content
+              creation (video and social, especially event recap), email &amp; SMS marketing, brand
+              identity systems, and brand strategy systems. Most client work has been event recap and
+              social content for cannabis and events brands; one engagement (CVALT) covered the entire
+              marketing and creative department.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the 7-11-4 framework?</summary>
+            <p class="faq-a">
+              A rule of thumb for how much trust a buyer needs before they purchase: roughly seven hours
+              of content, across eleven touchpoints, on four different platforms. It's used here to plan
+              content and lifecycle touchpoints on purpose instead of leaving reach to chance.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the 80/20 hybrid model?</summary>
+            <p class="faq-a">
+              An application of the Pareto principle to existing brand assets: audit what already exists,
+              identify the roughly twenty percent of content, formats, or flows driving most of the
+              results, and double down there before creating anything net-new.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Does Junkyard Butcher use AI tools?</summary>
+            <p class="faq-a">
+              Where they genuinely help, yes — but direction, editing, and final judgment stay human on
+              every deliverable. The standard isn't "no AI," it's no unconsidered output — nothing ships
+              that wasn't actually thought through.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What kind of brands is this a fit for?</summary>
+            <p class="faq-a">
+              Brands that care about craft and authenticity over churning out volume — a lot of the past
+              work has been cannabis delivery, dispensary, and events brands, but the frameworks and
+              services aren't industry-specific.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How is this different from a typical agency?</summary>
+            <p class="faq-a">
+              One operator working across content, identity, and lifecycle marketing instead of a project
+              getting split across siloed teams who've never talked to each other — and a systems-driven
+              process (the 7-11-4 and 80/20 hybrid) instead of an ad hoc one.
+            </p>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="closing-cta">
+      <h2>Ready to <span style="color:var(--acid);">dig in?</span></h2>
+      <a href="index.html#join" class="link-cta primary">Get on the Block →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-mark">/ Junkyard Butcher</div>
+    <div class="foot-links">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#services">Services</a>
+      <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="TikTok (add link)">TikTok</a>
+    </div>
+    <div class="foot-copy">© 2026 Junkyard Butcher. Cut to order — never scraped, never templated.</div>
+  </div>
+</footer>
+
+
+<script>
+
+(function(){
+  // Mobile nav toggle
+  var navToggle = document.querySelector('.nav-toggle');
+  var navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.textContent = open ? 'Close' : 'Menu';
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = 'Menu';
+      });
+    });
+  }
+
+  // Scroll progress bar
+  var bar = document.querySelector('.progress-bar');
+  function updateProgress(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? h.scrollTop / max : 0;
+    if (bar) bar.style.transform = 'scaleX(' + pct + ')';
+  }
+  document.addEventListener('scroll', updateProgress, { passive:true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // Custom cursor — fine pointer devices only, skipped under reduced motion, with a safe fallback
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    var ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.documentElement.classList.add('has-custom-cursor');
+
+    var mx = -100, my = -100, rx = -100, ry = -100;
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top = my + 'px';
+    });
+    (function loop(){
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(loop);
+    })();
+
+    document.querySelectorAll('a, button, input, .work-card').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('is-active'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('is-active'); });
+    });
+  }
+})();
+
+</script>
+
+</body>
+</html>

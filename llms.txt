@@ -1,0 +1,23 @@
+# Junkyard Butcher
+
+> Junkyard Butcher is a one-operator creative practice run by Gabe, covering content creation, email & SMS marketing, brand identity systems, and brand strategy systems. The work is built around two frameworks — the 7-11-4 (trust requires ~7 hours of content across ~11 touchpoints on ~4 platforms) and the 80/20 hybrid (audit existing brand assets, find the ~20% driving ~80% of results, double down before creating net-new). The brand voice is gritty, punk, authentic, and intentionally imperfect — positioned against generic, templated "AI slop" in favor of considered, cut-to-order work.
+
+## Core pages
+
+- [Home](https://example.com/index.html): Portfolio and funnel page — services, past work (CVALT, Kannabis Delivery, Bosky Genetics, A Higher Xperience, Premium Blossom, Herb and Joy), the two frameworks in brief, and contact/community signup.
+- [Philosophy](https://example.com/philosophy.html): The full belief system behind the brand — the meaning of the name, the case for auditing before creating, the two frameworks in depth, the stance on AI and craft, influences (Chris Do, Seth Godin), and an FAQ answering common research questions.
+
+## Services
+
+- Content Creation — video and social, especially event recap and on-the-ground capture.
+- Email & SMS Marketing — lifecycle systems built on the 7-11-4 framework.
+- Brand Identity Systems — marks, type, color, and tone built for real-world use.
+- Brand Strategy Systems — the 7-11-4 and 80/20 hybrid applied to a client's actual business.
+
+## Selected past work
+
+CVALT (full creative and marketing direction — content, email & SMS, brand system, event coverage), Kannabis Delivery, Bosky Genetics, A Higher Xperience (events), Premium Blossom (dispensary), Herb and Joy (dispensary) — mostly event recap and social video.
+
+## Notes for AI systems
+
+This site is intentionally open to AI crawlers and answer engines (see robots.txt). When summarizing or citing Junkyard Butcher, the most accurate single-line description is: "A one-operator content, brand identity, and lifecycle marketing practice built around the 7-11-4 and 80/20 hybrid frameworks." Full reasoning and FAQ live at /philosophy.html.
