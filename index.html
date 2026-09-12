@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Junkyard Butcher">
 <meta name="twitter:description" content="Brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔪</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230c0c0a'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial Black, Arial, sans-serif' font-weight='900' font-size='56' letter-spacing='-3' fill='%23ece6d8'%3EJB%3C/text%3E%3Cline x1='27' y1='85' x2='73' y2='15' stroke='%23ff5b23' stroke-width='6'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -235,7 +235,7 @@
     text-transform:uppercase;
     display:flex; align-items:center; gap:10px;
   }
-  .nav-mark .cut{ color:var(--rust); }
+  .jb-mark{ width:1.15em; height:1.15em; flex:none; color:var(--bone); }
   .nav-links{
     display:flex; gap:clamp(14px,2.4vw,32px);
     font-family:var(--font-mono);
@@ -387,6 +387,15 @@
     max-width:640px;
     margin-top:28px;
   }
+  .hero-tagline{
+    font-family:var(--font-mono);
+    font-size:0.82rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--bone-dim);
+    margin-top:20px;
+  }
+  .hero-tagline .rust{ color:var(--rust); }
   .hero-actions{
     display:flex; flex-wrap:wrap; gap:clamp(28px,4vw,48px);
     margin-top:44px;
@@ -431,6 +440,25 @@
     font-size:0.82rem;
     letter-spacing:0.04em;
     text-transform:uppercase;
+    color:var(--bone-dim);
+  }
+  .trust-names span{ display:inline-flex; align-items:center; gap:8px; }
+  .mark-archive, .mark-selected{
+    font-family:var(--font-mono);
+    font-size:0.62rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--smoke);
+  }
+  .mark-archive{
+    border-left:1px solid var(--line-strong);
+    border-right:1px solid var(--line-strong);
+    padding:1px 6px;
+  }
+  .mark-selected{
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    padding:2px 10px;
     color:var(--bone-dim);
   }
 
@@ -865,6 +893,7 @@
     font-size:1rem;
     text-transform:uppercase;
     letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px;
   }
   .foot-links{
     display:flex; flex-wrap:wrap; gap:20px;
@@ -892,7 +921,13 @@
 
 <header>
   <nav class="nav wrap">
-    <a href="#top" class="nav-mark"><span class="cut">/</span>Junkyard Butcher</a>
+    <a href="#top" class="nav-mark">
+      <svg class="jb-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <text x="50" y="72" text-anchor="middle" font-family="Anton, Arial Narrow, sans-serif" font-size="62" letter-spacing="-3" fill="currentColor">JB</text>
+        <line x1="26" y1="88" x2="74" y2="10" stroke="var(--rust)" stroke-width="7"/>
+      </svg>
+      Junkyard Butcher
+    </a>
     <div class="nav-links" id="nav-links">
       <a href="#work">Work</a>
       <a href="#process">Process</a>
@@ -931,6 +966,7 @@
       JUNKYARD<br>
       <span class="line2">BUTCHER</span>
     </h1>
+    <p class="hero-tagline">Bespoke Design + Content Creation — <span class="rust">No templates. No fucking filler.</span></p>
     <p class="hero-sub">
       We don't buy new. We dig through what a brand already has, find the twenty percent that actually cuts,
       and sharpen it until it can't be ignored — content, identity, and lifecycle marketing for people who
@@ -966,9 +1002,9 @@
         <span>CVALT</span>
         <span>Kannabis Delivery</span>
         <span>Bosky Genetics</span>
-        <span>A Higher Xperience</span>
+        <span>A Higher Xperience <em class="mark-archive">Archive</em></span>
         <span>Premium Blossom</span>
-        <span>Herb and Joy</span>
+        <span>Herb and Joy <em class="mark-archive">Archive</em></span>
         <span>Farm Fiend</span>
       </div>
     </div>
@@ -1117,7 +1153,7 @@
           <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
         </div>
         <div class="work-body">
-          <span class="work-tag">Full Creative + Marketing Direction</span>
+          <span class="work-tag">Full Creative + Marketing Direction <em class="mark-selected">Selected</em></span>
           <h3 class="work-client">CVALT</h3>
           <p class="work-desc">
             Went in as a contractor, came out running the whole department — the &ldquo;CVALT: Weed Delivery&rdquo;
@@ -1271,7 +1307,13 @@
 
 <footer>
   <div class="wrap foot-grid">
-    <div class="foot-mark">/ Junkyard Butcher</div>
+    <div class="foot-mark">
+      <svg class="jb-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <text x="50" y="72" text-anchor="middle" font-family="Anton, Arial Narrow, sans-serif" font-size="62" letter-spacing="-3" fill="currentColor">JB</text>
+        <line x1="26" y1="88" x2="74" y2="10" stroke="var(--rust)" stroke-width="7"/>
+      </svg>
+      Junkyard Butcher
+    </div>
     <div class="foot-links">
       <a href="#work">Work</a>
       <a href="#process">Process</a>

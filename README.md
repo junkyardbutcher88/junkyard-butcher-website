@@ -161,14 +161,27 @@ the iPad as they land.
 - **Type**: Anton (display/headlines), Space Grotesk (body/UI), JetBrains
   Mono (labels, tags, nav, captions).
 - **Rules, on purpose**: 0px border-radius everywhere except genuinely
-  circular motifs (the play button, the cursor, the rotating stamp) — no
-  pills, no soft shadows. No filled CTA buttons anywhere on the site —
-  every call-to-action is a typographic ghost link (`.link-cta`) that only
-  reveals its underline on hover. Color is spent only where it's load-
-  bearing (an active/hover state, the one CTA accent, the rust divider) —
-  no decorative gradient glows or unmotivated tinted panels. The work grid
-  uses irregular tile spans and aspect ratios on purpose, not a uniform
-  card grid.
+  circular motifs (the play button, the cursor, the rotating stamp, the
+  `.mark-selected` stamp badge) — no pills, no soft shadows. No filled CTA
+  buttons anywhere on the site — every call-to-action is a typographic ghost
+  link (`.link-cta`) that only reveals its underline on hover. Color is
+  spent only where it's load-bearing (an active/hover state, the one CTA
+  accent, the rust divider) — no decorative gradient glows or unmotivated
+  tinted panels. The work grid uses irregular tile spans and aspect ratios
+  on purpose, not a uniform card grid.
+- **JB house mark**: brought in from Gabe's brand style guide — a `.jb-mark`
+  inline SVG (bold "JB" with a diagonal rust cut) replaces the plain "/"
+  prefix in both the nav wordmark and the footer mark, and the favicon is
+  now a dark-circle JB badge instead of the placeholder knife emoji. If a
+  final custom logotype/monogram asset ever gets exported from the style
+  guide, swap it in for this inline-SVG approximation.
+- **Butcher's Marks visual language**: the style guide's stamp system
+  (`CUT` / `KEEP` / `REJECT` / `SELECTED` / `ARCHIVE`) is echoed sparingly —
+  an `.mark-archive` tag flags "A Higher Xperience" and "Herb and Joy" in
+  the trust strip as relationships kept off the work grid, and a
+  `.mark-selected` stamp badge marks the CVALT card as the flagship case
+  study. The hero also now carries the guide's tagline pairing: "Bespoke
+  Design + Content Creation — No templates. No fucking filler."
 
 ## The details that make it feel expensive
 
