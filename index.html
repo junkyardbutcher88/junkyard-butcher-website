@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Junkyard Butcher — Brand Strategy, Identity &amp; Content</title>
 <meta name="description" content="Junkyard Butcher — brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
-<link rel="canonical" href="https://example.com/">
+<link rel="canonical" href="https://junkyardbutcher88.github.io/junkyard-butcher-website/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Junkyard Butcher — Brand Strategy, Identity &amp; Content">
 <meta property="og:description" content="Brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
-<meta property="og:url" content="https://example.com/">
+<meta property="og:url" content="https://junkyardbutcher88.github.io/junkyard-butcher-website/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Junkyard Butcher">
 <meta name="twitter:description" content="Brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
@@ -19,7 +19,7 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Junkyard Butcher",
-  "url": "https://example.com/",
+  "url": "https://junkyardbutcher88.github.io/junkyard-butcher-website/",
   "description": "Junkyard Butcher provides content creation, email & SMS marketing, brand identity systems, and brand strategy systems, built around the 7-11-4 and 80/20 hybrid frameworks.",
   "founder": {
     "@type": "Person",
@@ -706,6 +706,49 @@
   }
   .work-desc{ color:var(--bone-dim); font-size:0.92rem; max-width:56ch; }
 
+  /* "The Next Cut" closing slot — a 35mm filmstrip bar instead of a full
+     tall card, so an empty placeholder doesn't eat a screen's worth of space. */
+  .work-filmstrip{
+    grid-column:span 6;
+    position:relative;
+    display:flex; flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px 32px;
+    padding:26px clamp(20px,4vw,40px);
+    background-color:var(--iron-2);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='15'%3E%3Crect x='9' y='3.5' width='10' height='8' rx='2' fill='%230c0c0a'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='15'%3E%3Crect x='9' y='3.5' width='10' height='8' rx='2' fill='%230c0c0a'/%3E%3C/svg%3E");
+    background-repeat:repeat-x, repeat-x;
+    background-position:top left, bottom left;
+    background-size:28px 15px, 28px 15px;
+    border-top:1px solid var(--line-strong);
+    border-bottom:1px solid var(--line-strong);
+    transition:background-color .2s ease;
+  }
+  .work-filmstrip:hover, .work-filmstrip:focus-visible{ background-color:var(--iron); outline:none; }
+  .work-filmstrip-info{
+    display:flex; flex-direction:column; gap:6px;
+    min-width:200px;
+  }
+  .work-filmstrip-title{
+    font-family:var(--font-display);
+    font-size:clamp(1.3rem,2.6vw,1.9rem);
+    text-transform:uppercase;
+    line-height:1;
+    transition:color .2s ease;
+  }
+  .work-filmstrip:hover .work-filmstrip-title,
+  .work-filmstrip:focus-visible .work-filmstrip-title{ color:var(--acid); }
+  .work-filmstrip-desc{
+    color:var(--bone-dim);
+    font-size:0.9rem;
+    max-width:46ch;
+    flex:1 1 260px;
+  }
+  .work-filmstrip-cta{ flex:none; }
+
   /* ============ LIGHTBOX ============ */
   .lightbox{
     position:fixed; inset:0; z-index:1200;
@@ -1225,21 +1268,16 @@
         </div>
       </article>
 
-      <article class="work-card featured">
-        <a href="#join" style="display:contents;">
-        <div class="work-frame" style="align-items:flex-end; justify-content:flex-start; padding:24px;">
-          <span class="reel-tag" style="position:static;">This slot's still empty</span>
-        </div>
-        <div class="work-body">
+      <a href="#join" class="work-filmstrip">
+        <div class="work-filmstrip-info">
           <span class="work-tag">Your Brand Here</span>
-          <h3 class="work-client">The Next Cut</h3>
-          <p class="work-desc">
-            Every case study above started as an empty grid square. Yours could be next — get on the
-            block and let's talk about it.
-          </p>
+          <h3 class="work-filmstrip-title">The Next Cut</h3>
         </div>
-        </a>
-      </article>
+        <p class="work-filmstrip-desc">
+          Every case study above started as an empty grid square. Yours could be next.
+        </p>
+        <span class="link-cta primary work-filmstrip-cta">Get on the Block →</span>
+      </a>
 
     </div>
   </section>

@@ -44,4 +44,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://junkyardbutcher88.github.io/junkyard-butcher-website/sitemap.xml
