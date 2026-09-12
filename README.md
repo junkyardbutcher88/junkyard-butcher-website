@@ -7,7 +7,7 @@ JS inlined, no `node_modules` — so it deploys to GitHub Pages as-is.
 ## Pages
 
 - **`index.html`** — the pitch. Hero, process teaser, the two frameworks in
-  brief, services, work, and the "Get on the Block" conversion point.
+  brief, services, work, and the "Get on the Butcher's Block" conversion point.
 - **`philosophy.html`** — the full read. Long-form thought-leadership content
   for warm leads doing research and for search/AI engines: the origin of the
   name, the belief system, both frameworks explained in depth, the stance on
@@ -112,9 +112,9 @@ the iPad as they land.
 - **Farm Fiend** (done, real asset + working link) — now a full-width
   closing tile with the real cover frame (`assets/farmfiend_cover.jpg`); the
   lightbox preview links out to the real Instagram reel.
-- **A Higher Xperience** — still a genuine "Reel — coming soon" placeholder.
-  No matching asset has turned up in Drive yet — swap the `.work-frame` div
-  contents for a real thumbnail/video once you have something to show.
+- **A Higher Xperience** — pulled off the work grid at Gabe's request (the
+  case-study content didn't represent the brand well) but kept in the
+  "Prime Cuts" trust strip, since it's still a real client relationship.
 - **Herb and Joy** — pulled off the work grid at the client's request (no
   matching asset existed for it anyway) but kept in the "Prime Cuts" trust
   strip, since it's still a real client relationship — just not one with a
@@ -134,7 +134,7 @@ the iPad as they land.
   source `.mov` files) still needs a manual export/download pass before it
   can follow the same pipeline — Premium Blossom links out to Drive as a
   stopgap until that happens.
-- **Email capture form** — the "Get on the Block" form (`#join` on the
+- **Email capture form** — the "Get on the Butcher's Block" form (`#join` on the
   homepage) has `action="#"` and does nothing yet. Point it at your ESP
   (Klaviyo, Flodesk, ConvertKit, etc.) or wire it to a serverless endpoint.
 - **Contact email** — `mailto:hello@junkyardbutcher.com` appears in the Join
