@@ -16,33 +16,40 @@ JS inlined, no `node_modules` — so it deploys to GitHub Pages as-is.
 
 ## Deploy to GitHub Pages
 
-1. Create a new repo on GitHub (e.g. `junkyard-butcher` or `<yourname>.github.io`
-   if you want it at the root of your GitHub account domain).
-2. Push this folder's contents to the repo:
-   ```bash
-   git init
-   git add .
-   git commit -m "Launch Junkyard Butcher site"
-   git branch -M main
-   git remote add origin https://github.com/<you>/<repo>.git
-   git push -u origin main
-   ```
-3. In the repo: **Settings → Pages → Build and deployment → Source** = `Deploy from a branch`,
-   **Branch** = `main`, folder `/ (root)`. Save.
-4. GitHub gives you a URL in a minute or two — `https://<you>.github.io/<repo>/`
-   (or `https://<you>.github.io/` if you used the `<yourname>.github.io` repo name).
-5. Optional: add a custom domain under **Settings → Pages → Custom domain** once you
-   have one pointed at it.
+Live at `https://junkyardbutcher88.github.io/junkyard-butcher-website/` and
+being pointed at the custom domain below. For reference, this is how it was
+stood up:
 
-## Important — replace the placeholder domain before going live
+1. Repo: `github.com/junkyardbutcher88/junkyard-butcher-website` (public).
+2. **Settings → Pages → Build and deployment → Source** = `Deploy from a branch`,
+   **Branch** = `main`, folder `/ (root)`.
+3. Custom domain (below) is set via a `CNAME` file at the repo root, which is
+   what tells GitHub Pages to serve the site at that domain instead of (or in
+   addition to) the `github.io` URL.
 
-Every canonical link, Open Graph tag, JSON-LD `url`, `sitemap.xml` entry, and
-the `Sitemap:` line in `robots.txt` currently points at `https://example.com/`.
-Once you know your real domain (a GitHub Pages URL or a custom one), do a
-find-and-replace for `https://example.com` across `index.html`,
-`philosophy.html`, `sitemap.xml`, and `robots.txt`. Search/AI engines treat
-this metadata as fact, so it needs to be correct before it's crawled — don't
-leave the placeholder live.
+## Custom domain — junkyardbutcher.com
+
+Gabe owns `junkyardbutcher.com`. It's wired up as the primary domain:
+
+- **`CNAME`** file at the repo root contains `junkyardbutcher.com` — this is
+  what GitHub Pages reads to know the custom domain. Don't delete it or the
+  domain mapping breaks.
+- Every canonical link, Open Graph tag, JSON-LD `url`, `sitemap.xml` entry,
+  the `Sitemap:` line in `robots.txt`, and the links in `llms.txt` point at
+  `https://junkyardbutcher.com/` — search/AI engines treat this metadata as
+  fact, so keep it in sync if the domain ever changes again.
+- **DNS** (at whichever registrar/DNS host the domain lives at) needs, for the
+  apex domain `junkyardbutcher.com`:
+  - Four `A` records pointing to GitHub Pages: `185.199.108.153`,
+    `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+  - (Optional, IPv6) Four `AAAA` records: `2606:50c0:8000::153`,
+    `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
+  - If `www.junkyardbutcher.com` should also work, a `CNAME` record for `www`
+    pointing to `junkyardbutcher88.github.io`.
+- Once DNS resolves, **Settings → Pages** on the repo will show the domain as
+  verified and let you check **Enforce HTTPS** — do that once it's available;
+  it can take a little while (sometimes up to a day) for GitHub's certificate
+  to provision after DNS first propagates.
 
 ## SEO / AIO (AI-optimized) infrastructure
 

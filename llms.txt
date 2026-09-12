@@ -4,8 +4,8 @@
 
 ## Core pages
 
-- [Home](https://junkyardbutcher88.github.io/junkyard-butcher-website/index.html): Portfolio and funnel page — services, past work (CVALT, Kannabis Delivery, Bosky Genetics, A Higher Xperience, Premium Blossom, Herb and Joy), the two frameworks in brief, and contact/community signup.
-- [Philosophy](https://junkyardbutcher88.github.io/junkyard-butcher-website/philosophy.html): The full belief system behind the brand — the meaning of the name, the case for auditing before creating, the two frameworks in depth, the stance on AI and craft, influences (Chris Do, Seth Godin), and an FAQ answering common research questions.
+- [Home](https://junkyardbutcher.com/index.html): Portfolio and funnel page — services, past work (CVALT, Kannabis Delivery, Bosky Genetics, A Higher Xperience, Premium Blossom, Herb and Joy), the two frameworks in brief, and contact/community signup.
+- [Philosophy](https://junkyardbutcher.com/philosophy.html): The full belief system behind the brand — the meaning of the name, the case for auditing before creating, the two frameworks in depth, the stance on AI and craft, influences (Chris Do, Seth Godin), and an FAQ answering common research questions.
 
 ## Services
 
