@@ -10,7 +10,12 @@
 <meta property="og:title" content="Junkyard Butcher — Brand Strategy, Identity &amp; Content">
 <meta property="og:description" content="Brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
 <meta property="og:url" content="https://junkyardbutcher.com/">
+<meta property="og:image" content="https://junkyardbutcher.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Junkyard Butcher — no templates, no fucking filler.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://junkyardbutcher.com/assets/og-image.jpg">
 <meta name="twitter:title" content="Junkyard Butcher">
 <meta name="twitter:description" content="Brand strategy, identity systems, content creation, and email/SMS marketing for brands that refuse to be algorithm filler.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230c0c0a'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial Black, Arial, sans-serif' font-weight='900' font-size='56' letter-spacing='-3' fill='%23ece6d8'%3EJB%3C/text%3E%3Cline x1='27' y1='85' x2='73' y2='15' stroke='%23ff5b23' stroke-width='6'/%3E%3C/svg%3E">
@@ -714,9 +719,9 @@
     border-color:var(--acid); color:var(--acid);
   }
   .collage-tile.lightbox-trigger:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
-  [data-lightbox-video], [data-lightbox-ig]{ cursor:pointer; }
+  [data-lightbox-video], [data-lightbox-external]{ cursor:pointer; }
   .work-frame[data-lightbox-video]:focus-visible,
-  .work-frame[data-lightbox-ig]:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
+  .work-frame[data-lightbox-external]:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
   .work-body{ padding:24px; flex:1; display:flex; flex-direction:column; gap:12px; }
   .work-tag{
     font-family:var(--font-mono);
@@ -1080,9 +1085,9 @@
         <h3 class="framework-title">The <span>7-11-4</span></h3>
         <p>
           A buyer needs roughly seven hours of content, across eleven touchpoints, on four different
-          platforms before they trust you enough to hand over money. We don't leave that stacking up to
-          chance — we build the content and lifecycle system that puts those touches in front of the
-          right person on purpose.
+          platforms before they trust you enough to hand over money. It's a rule of thumb, not a law of
+          physics — but it's a useful one. We don't leave that stacking up to chance — we build the
+          content and lifecycle system that puts those touches in front of the right person on purpose.
         </p>
       </div>
       <div class="framework-card">
@@ -1153,6 +1158,10 @@
         <div class="eyebrow">Selected Work</div>
         <h2 class="section-title">The Cuts</h2>
       </div>
+      <p class="section-note">
+        Most of this happens to be cannabis — that's where brands let one operator run the whole
+        system instead of babysitting four vendors. The frameworks don't know what's in the jar.
+      </p>
     </div>
 
     <div class="work-grid">
@@ -1162,16 +1171,16 @@
           <div class="collage-tile lightbox-trigger" role="button" tabindex="0"
                data-lightbox-video="assets/cvalt_reel.mp4" data-lightbox-poster="assets/cvalt_reel_poster.jpg"
                data-lightbox-caption="CVALT — brand video, cut for the app launch." aria-label="Play the CVALT brand video">
-            <img src="assets/cvalt_reel_poster.jpg" alt="CVALT brand video, cover frame" loading="lazy">
+            <img src="assets/cvalt_reel_poster.jpg" alt="CVALT brand video, cover frame" width="540" height="958" loading="lazy">
             <span class="play" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             </span>
           </div>
           <div class="collage-tile">
-            <img src="assets/cvalt_app.jpg" alt="CVALT: Weed Delivery app store listing" loading="lazy">
+            <img src="assets/cvalt_app.jpg" alt="CVALT: Weed Delivery app store listing" width="503" height="720" loading="lazy">
           </div>
           <div class="collage-tile">
-            <img src="assets/cvalt_sticker.jpg" alt="Cannabis, Delivered sticker design produced for CVALT" loading="lazy">
+            <img src="assets/cvalt_sticker.jpg" alt="Cannabis, Delivered sticker design produced for CVALT" width="562" height="1000" loading="lazy">
           </div>
           <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
         </div>
@@ -1203,7 +1212,7 @@
         <div class="work-frame ar-wide has-image" role="button" tabindex="0"
              data-lightbox-video="assets/kannabis_reel.mp4" data-lightbox-poster="assets/kannabis_reel_poster.jpg"
              data-lightbox-caption="Kannabis Delivery — interactive drop-day reel." aria-label="Play the Kannabis Delivery reel">
-          <img src="assets/kannabis_reel_poster.jpg" alt="Kannabis Delivery interactive reel, cover frame" loading="lazy">
+          <img src="assets/kannabis_reel_poster.jpg" alt="Kannabis Delivery interactive reel, cover frame" width="540" height="960" loading="lazy">
           <span class="reel-tag">Watch the reel</span>
           <span class="play" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1225,10 +1234,10 @@
       <article class="work-card span-3">
         <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:4/3;">
           <div class="collage-tile cover">
-            <img src="assets/bosky_genetics.jpg" alt="Bosky Genetics grow room, on-the-ground capture" loading="lazy">
+            <img src="assets/bosky_genetics.jpg" alt="Bosky Genetics grow room, on-the-ground capture" width="800" height="450" loading="lazy">
           </div>
           <div class="collage-tile cover">
-            <img src="assets/bosky_jar.jpg" alt="Bosky Genetics jar, product photography" loading="lazy">
+            <img src="assets/bosky_jar.jpg" alt="Bosky Genetics jar, product photography" width="700" height="934" loading="lazy">
           </div>
           <span class="reel-tag" style="left:16px; bottom:14px;">Grow room + product photography</span>
         </div>
@@ -1251,9 +1260,9 @@
            junkyard-butcher-portfolio-case-studies.md for the full shot list. -->
       <article class="work-card span-3">
         <div class="work-frame ar-wide has-image" role="button" tabindex="0"
-             data-lightbox-ig="https://drive.google.com/file/d/13LiJ7PhkfC53tEOpUiCsilCSxtH4GhWZ/view" data-lightbox-poster="assets/premium_blossom.jpg"
+             data-lightbox-external="https://drive.google.com/file/d/13LiJ7PhkfC53tEOpUiCsilCSxtH4GhWZ/view" data-lightbox-poster="assets/premium_blossom.jpg"
              data-lightbox-caption="Premium Blossom — full recap reel, hosted on Drive until the final web export lands." aria-label="Preview the Premium Blossom reel">
-          <img src="assets/premium_blossom.jpg" alt="Premium Blossom recap reel, cover frame" loading="lazy">
+          <img src="assets/premium_blossom.jpg" alt="Premium Blossom recap reel, cover frame" width="507" height="900" loading="lazy">
           <span class="reel-tag">Watch the full reel</span>
           <span class="play" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1274,9 +1283,9 @@
 
       <article class="work-card featured">
         <div class="work-frame ar-wide has-image" role="button" tabindex="0"
-             data-lightbox-ig="https://www.instagram.com/farmfiend/reel/DG6wlCayIea/" data-lightbox-poster="assets/farmfiend_cover.jpg"
+             data-lightbox-external="https://www.instagram.com/farmfiend/reel/DG6wlCayIea/" data-lightbox-poster="assets/farmfiend_cover.jpg"
              data-lightbox-caption="Farm Fiend — brand collab reel, on Instagram." aria-label="Preview the Farm Fiend reel">
-          <img src="assets/farmfiend_cover.jpg" alt="Farm Fiend brand collab reel, cover frame" loading="lazy">
+          <img src="assets/farmfiend_cover.jpg" alt="Farm Fiend brand collab reel, cover frame" width="281" height="500" loading="lazy">
           <span class="reel-tag">Watch the full reel</span>
           <span class="play" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -1299,9 +1308,9 @@
   <section class="founder">
     <div class="wrap founder-grid">
       <div class="founder-frame" role="button" tabindex="0"
-           data-lightbox-ig="https://www.instagram.com/junkyardbutcher/reel/CnwDbTUKBiL/" data-lightbox-poster="assets/skate_frame.jpg"
+           data-lightbox-external="https://www.instagram.com/junkyardbutcher/reel/CnwDbTUKBiL/" data-lightbox-poster="assets/skate_frame.jpg"
            data-lightbox-caption="Off the clock — the reel, on Instagram." aria-label="Preview the reel">
-        <img src="assets/skate_frame.jpg" alt="Skateboard on cracked asphalt, casting a long shadow" loading="lazy">
+        <img src="assets/skate_frame.jpg" alt="Skateboard on cracked asphalt, casting a long shadow" width="281" height="500" loading="lazy">
         <span class="play" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
         </span>
@@ -1368,7 +1377,6 @@
       <a href="#services">Services</a>
       <a href="philosophy.html">Philosophy</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-      <a href="#" aria-label="TikTok (add link)">TikTok</a>
     </div>
     <div class="foot-copy">© 2026 Junkyard Butcher. Cut to order — never scraped, never templated.</div>
   </div>
@@ -1439,16 +1447,16 @@
 
   // Video / reel lightbox — real self-hosted clips play inline; Instagram-only
   // reels get a branded preview panel instead of an abrupt tab switch.
-  var triggers = document.querySelectorAll('[data-lightbox-video], [data-lightbox-ig]');
+  var triggers = document.querySelectorAll('[data-lightbox-video], [data-lightbox-external]');
   if (triggers.length) {
     var overlay = document.createElement('div');
     overlay.className = 'lightbox';
     overlay.setAttribute('aria-hidden', 'true');
     overlay.innerHTML =
-      '<div class="lightbox-inner">' +
+      '<div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Media preview" aria-describedby="lightbox-caption">' +
         '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>' +
         '<div class="lightbox-media"></div>' +
-        '<p class="lightbox-caption"></p>' +
+        '<p class="lightbox-caption" id="lightbox-caption"></p>' +
       '</div>';
     document.body.appendChild(overlay);
     var media = overlay.querySelector('.lightbox-media');
@@ -1460,13 +1468,15 @@
       var cap = el.getAttribute('data-lightbox-caption') || '';
       var poster = el.getAttribute('data-lightbox-poster') || '';
       var video = el.getAttribute('data-lightbox-video');
-      var ig = el.getAttribute('data-lightbox-ig');
+      var ext = el.getAttribute('data-lightbox-external');
       if (video) {
         media.innerHTML = '<video src="' + video + '" poster="' + poster + '" controls autoplay muted playsinline loop></video>';
-      } else if (ig) {
+      } else if (ext) {
+        var isIG = /instagram\.com/i.test(ext);
+        var ctaLabel = isIG ? 'Watch on Instagram ↗' : 'Watch the full reel ↗';
         media.innerHTML =
           '<img src="' + poster + '" alt="">' +
-          '<a class="link-cta primary lightbox-ig-cta" href="' + ig + '" target="_blank" rel="noopener">Watch on Instagram ↗</a>';
+          '<a class="link-cta primary lightbox-ig-cta" href="' + ext + '" target="_blank" rel="noopener">' + ctaLabel + '</a>';
       }
       caption.textContent = cap;
       lastFocused = document.activeElement;
@@ -1485,7 +1495,19 @@
     overlay.addEventListener('click', function(e){ if (e.target === overlay) closeLightbox(); });
     closeBtn.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { closeLightbox(); return; }
+      if (e.key === 'Tab') {
+        var focusable = overlay.querySelectorAll('a[href], button:not([disabled])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
     });
     triggers.forEach(function(el){
       el.addEventListener('click', function(){ openLightbox(el); });
