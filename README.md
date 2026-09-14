@@ -100,22 +100,34 @@ the iPad as they land.
   a real brand video (`assets/cvalt_reel.mp4`, poster
   `assets/cvalt_reel_poster.jpg`) that opens in the on-page lightbox, the
   app-store listing screenshot (`assets/cvalt_app.jpg`), and the "Cannabis,
-  Delivered" sticker design (`assets/cvalt_sticker.jpg`).
+  Delivered" sticker design (`assets/cvalt_sticker.jpg`). Copy now leads with
+  the real email/SMS numbers — $4.6M in platform-attributed revenue in one
+  year on ~$22K spend, delivery rate up from 66% to 86% — called out in a
+  `.work-stats` row under the description (see
+  `junkyard-butcher-portfolio-case-studies.md` for the source figures).
 - **Kannabis Delivery** (done, real video) — a real interactive IG reel,
   compressed and self-hosted (`assets/kannabis_reel.mp4`, poster
   `assets/kannabis_reel_poster.jpg`), playable in the lightbox. Replaces the
   old "Reel — coming soon" placeholder.
-- **Bosky Genetics** (done, real assets) — a two-image collage: the
-  grow-room photo (`assets/bosky_genetics.jpg`) and a studio product shot of
-  the jar (`assets/bosky_jar.jpg`). No video yet.
-- **Premium Blossom** (done, real asset + working link) — cover frame from
-  the real recap reel (`assets/premium_blossom.jpg`); the frame opens the
-  lightbox preview with a "Watch on Instagram" CTA through to the actual
-  Google Drive video
+- **Bosky Genetics** (done, real assets, copy updated) — a two-image collage:
+  the grow-room photo (`assets/bosky_genetics.jpg`) and a studio product shot
+  of the jar (`assets/bosky_jar.jpg`). No video yet — if a Transbay/harvest
+  highlight reel ever gets exported it belongs on this card (see the TODO
+  comment above the card in `index.html`).
+- **Premium Blossom** (real asset + working link, copy updated, photo swap
+  pending) — cover frame from the real recap reel (`assets/premium_blossom.jpg`);
+  the frame opens the lightbox preview with a "Watch on Instagram" CTA through
+  to the actual Google Drive video
   (`https://drive.google.com/file/d/13LiJ7PhkfC53tEOpUiCsilCSxtH4GhWZ/view`),
-  and the real client testimonial from Instagram is quoted in the copy. Once
-  you have the final export sized for the web, swap the Drive link for the
-  self-hosted `<video>` pattern already used on CVALT and Kannabis Delivery.
+  and the real client testimonial from Instagram is quoted in the copy. Gabe
+  picked three specific shots to replace this single-frame tile with a
+  3-image collage (hero: the candid toss/celebration shot with the "Harvest
+  Market 2026" screen behind it; second: the ribbon-cutting crowd shot;
+  third: the candid customer-at-the-counter shot) — see the TODO comment
+  above this card in `index.html` and `junkyard-butcher-portfolio-case-studies.md`
+  for the full shot list. Once those exports land, rebuild this card as a
+  3-tile collage matching CVALT's pattern, and swap the Drive link for a
+  self-hosted `<video>` if a final web-sized export of the reel itself shows up too.
 - **Farm Fiend** (done, real asset + working link) — now a full-width
   closing tile with the real cover frame (`assets/farmfiend_cover.jpg`); the
   lightbox preview links out to the real Instagram reel.

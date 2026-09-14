@@ -732,6 +732,29 @@
     line-height:1;
   }
   .work-desc{ color:var(--bone-dim); font-size:0.92rem; max-width:56ch; }
+  .work-desc em{ font-style:normal; color:var(--acid); }
+  .work-stats{
+    display:flex; flex-wrap:wrap;
+    gap:24px 40px;
+    margin-top:6px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  .stat{ display:flex; flex-direction:column; gap:4px; }
+  .stat-num{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    color:var(--acid);
+    line-height:1;
+  }
+  .stat-label{
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--smoke);
+    max-width:22ch;
+  }
 
   /* ============ LIGHTBOX ============ */
   .lightbox{
@@ -1153,13 +1176,26 @@
           <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
         </div>
         <div class="work-body">
-          <span class="work-tag">Full Creative + Marketing Direction <em class="mark-selected">Selected</em></span>
+          <span class="work-tag">Brand Strategy &middot; Email &amp; SMS Systems &middot; Content <em class="mark-selected">Selected</em></span>
           <h3 class="work-client">CVALT</h3>
           <p class="work-desc">
-            Went in as a contractor, came out running the whole department — the &ldquo;CVALT: Weed Delivery&rdquo;
-            app's store presence, packaging and sticker runs, email &amp; SMS, brand system, and event
-            coverage, all under one roof instead of scattered across four vendors who'd never spoken.
+            <em>From blast sends to a real system.</em> Went in as a contractor, came out running the whole
+            department — the &ldquo;CVALT: Weed Delivery&rdquo; app's store presence, packaging and sticker runs,
+            email &amp; SMS, brand system, and event coverage, all under one roof instead of scattered across
+            four vendors who'd never spoken. The email &amp; SMS system alone took a zero-Instagram, roughly
+            2%-conversion list and turned it into $4.6M in platform-attributed revenue in a year, on about
+            $22K in spend.
           </p>
+          <div class="work-stats">
+            <div class="stat">
+              <span class="stat-num">$4.6M</span>
+              <span class="stat-label">Platform-Attributed Revenue, One Year</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">66%→86%</span>
+              <span class="stat-label">Email &amp; SMS Delivery Rate</span>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -1183,6 +1219,9 @@
         </div>
       </article>
 
+      <!-- TODO: if a Transbay/harvest highlight reel (even a 30-second cut) ever gets exported,
+           swap it in as a lightbox video the way CVALT and Kannabis Delivery use one — it belongs
+           on this card more than the two static images do. -->
       <article class="work-card span-3">
         <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:4/3;">
           <div class="collage-tile cover">
@@ -1194,15 +1233,22 @@
           <span class="reel-tag" style="left:16px; bottom:14px;">Grow room + product photography</span>
         </div>
         <div class="work-body">
-          <span class="work-tag">Social + Event Recap</span>
+          <span class="work-tag">Video &middot; Photography &middot; Brand Documentation</span>
           <h3 class="work-client">Bosky Genetics</h3>
           <p class="work-desc">
-            Shot in the grow room, not just the release party — the genetics were the story, so the
-            genetics led the edit.
+            <em>In the room before it was a brand.</em> Shot Bosky's first harvest and followed them through
+            the Transbay Challenge and their trip to Hashhole Island. They didn't take first at Transbay, but
+            walked away with real recognition from the biggest names in the space — and grew fast right after,
+            on the strength of the product itself.
           </p>
         </div>
       </article>
 
+      <!-- TODO: swap this single-frame reel tile for a 3-image collage (same pattern as the
+           CVALT card above) once the photo exports land — hero: candid toss/celebration shot at
+           the counter with the "Harvest Market 2026" screen behind it; second: ribbon-cutting
+           crowd shot; third: candid customer-at-the-counter interaction. See
+           junkyard-butcher-portfolio-case-studies.md for the full shot list. -->
       <article class="work-card span-3">
         <div class="work-frame ar-wide has-image" role="button" tabindex="0"
              data-lightbox-ig="https://drive.google.com/file/d/13LiJ7PhkfC53tEOpUiCsilCSxtH4GhWZ/view" data-lightbox-poster="assets/premium_blossom.jpg"
@@ -1214,12 +1260,14 @@
           </span>
         </div>
         <div class="work-body">
-          <span class="work-tag">Social + Event Recap</span>
+          <span class="work-tag">Video &middot; 35mm Film &middot; Recap Content</span>
           <h3 class="work-client">Premium Blossom</h3>
           <p class="work-desc">
-            &ldquo;Thank you @JunkyardButcher for bringing this reel to life and capturing the spirit of our
-            community&rdquo; — Premium Blossom, straight off the post. Dispensary social built to feel premium
-            without feeling stiff.
+            <em>Shot on film, on purpose.</em> Premium Blossom already had a strong brand identity built around
+            community — the job was capturing it right, not reinventing it. Shot their grand opening on 35mm
+            film instead of digital, so it felt like family footage instead of an ad, plus recap videos that
+            kept the same feeling going. &ldquo;Thank you @JunkyardButcher for bringing this reel to life and
+            capturing the spirit of our community&rdquo; — straight off their own post.
           </p>
         </div>
       </article>
