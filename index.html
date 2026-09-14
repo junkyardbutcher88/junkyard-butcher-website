@@ -28,7 +28,8 @@
   "description": "Junkyard Butcher provides content creation, email & SMS marketing, brand identity systems, and brand strategy systems, built around the 7-11-4 and 80/20 hybrid frameworks.",
   "founder": {
     "@type": "Person",
-    "name": "Gabe"
+    "name": "Gabe",
+    "jobTitle": "Founder & Creative Director"
   },
   "knowsAbout": [
     "Brand Strategy",
@@ -694,6 +695,62 @@
     text-transform:uppercase;
     color:var(--smoke);
   }
+  .work-frame.is-pending{ cursor:default; }
+  .work-frame.is-pending .reel-tag{ color:var(--smoke); }
+  .work-frame.is-pending img{ opacity:0.82; }
+
+  /* ============ BYLINE ============ */
+  .byline{ border-bottom:1px solid var(--line); }
+  .byline-grid{
+    display:grid;
+    grid-template-columns:132px 1fr;
+    gap:clamp(20px,4vw,44px);
+    align-items:center;
+    padding-block:clamp(28px,4vw,44px);
+  }
+  @media (max-width:620px){
+    .byline-grid{ grid-template-columns:92px 1fr; gap:20px; align-items:start; }
+  }
+  .byline-frame{
+    position:relative;
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+    aspect-ratio:1/1;
+    max-width:100%;
+  }
+  .byline-frame img{
+    width:100%; height:100%;
+    object-fit:cover; display:block;
+    filter:grayscale(1) contrast(1.06);
+  }
+  .byline-frame::after{
+    content:""; position:absolute; left:0; right:0; bottom:0;
+    height:3px; background:var(--rust);
+  }
+  .byline-name{
+    font-family:var(--font-display);
+    font-size:clamp(1.6rem,4.2vw,2.6rem);
+    line-height:1;
+    letter-spacing:-0.005em;
+    text-transform:uppercase;
+    margin:10px 0 0;
+  }
+  .byline-line{
+    color:var(--bone-dim);
+    max-width:58ch;
+    margin:12px 0 0;
+  }
+  .byline-meta{
+    display:flex; flex-wrap:wrap;
+    gap:6px 22px;
+    font-family:var(--font-mono);
+    font-size:var(--fs-label);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--smoke);
+    margin:16px 0 0;
+  }
+
   .collage-tile.lightbox-trigger{
     cursor:pointer;
     background:var(--iron-2);
@@ -917,6 +974,20 @@
     min-width:0;
   }
   .join-form input::placeholder{ color:var(--smoke); }
+  .join-form button[disabled]{ opacity:0.45; cursor:not-allowed; }
+  .join-status{
+    font-family:var(--font-mono);
+    font-size:0.86rem;
+    line-height:1.55;
+    margin:20px 0 0;
+    max-width:54ch;
+    padding-left:14px;
+    border-left:2px solid var(--smoke);
+    color:var(--bone-dim);
+  }
+  .join-status.is-good{ border-left-color:var(--acid); color:var(--bone); }
+  .join-status.is-bad{ border-left-color:var(--rust); color:var(--bone); }
+  .join-status.is-wait{ border-left-color:var(--smoke); color:var(--smoke); }
   .join-form input:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; }
   .join-alt{
     margin-top:30px;
@@ -1059,19 +1130,43 @@
     </div>
   </div>
 
+  <!-- ============ BYLINE ============ -->
+  <section class="byline">
+    <div class="wrap byline-grid">
+      <div class="byline-frame">
+        <img src="assets/gabe_portrait.jpg" alt="Gabe, the operator behind Junkyard Butcher"
+             width="900" height="900" loading="lazy">
+      </div>
+      <div>
+        <div class="eyebrow">Who&rsquo;s Cutting</div>
+        <!-- TODO: swap in the full name once confirmed -->
+        <p class="byline-name">Gabe</p>
+        <p class="byline-line">
+          I&rsquo;m the whole shop. I run the audit, hold the camera, cut the edit and write the
+          sequences &mdash; so the person on the first call is the person doing the work.
+        </p>
+        <p class="byline-meta">
+          <span>One operator</span>
+          <span>No vendor chain</span>
+          <span>Camera to inbox</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ MANIFESTO ============ -->
   <section class="manifesto" id="process">
     <div class="wrap manifesto-grid">
       <div>
         <div class="eyebrow">The Process</div>
         <p class="manifesto-quote">
-          Most brands go looking for something new. <em>We go digging</em> for what's already there —
+          Most brands go looking for something new. <em>I go digging</em> for what's already there —
           and make it work harder.
         </p>
       </div>
       <div class="manifesto-body">
         <p>
-          Every project starts the same way, before a single new asset gets made: an audit. We go through
+          Every project starts the same way, before a single new asset gets made: an audit. I go through
           what you've already built — old posts, an abandoned list, a logo nobody's touched in years — and
           find the parts with real cutting edge. That's the raw material. Everything else gets carved away.
         </p>
@@ -1280,14 +1375,10 @@
            crowd shot; third: candid customer-at-the-counter interaction. See
            junkyard-butcher-portfolio-case-studies.md for the full shot list. -->
       <article class="work-card span-3">
-        <div class="work-frame ar-wide has-image" role="button" tabindex="0"
-             data-lightbox-external="https://drive.google.com/file/d/13LiJ7PhkfC53tEOpUiCsilCSxtH4GhWZ/view" data-lightbox-poster="assets/premium_blossom.jpg"
-             data-lightbox-caption="Premium Blossom — full recap reel, hosted on Drive until the final web export lands." aria-label="Preview the Premium Blossom reel">
+        <!-- Drive link removed. Becomes a <jb-video> tile once the reel is encoded to R2. -->
+        <div class="work-frame ar-wide has-image is-pending">
           <img src="assets/premium_blossom.jpg" alt="Premium Blossom recap reel, cover frame" width="507" height="900" loading="lazy">
-          <span class="reel-tag">Watch the full reel</span>
-          <span class="play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </span>
+          <span class="reel-tag">Full reel &mdash; landing here shortly</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Video &middot; 35mm Film &middot; Recap Content</span>
@@ -1376,11 +1467,12 @@
         studies before they're polished, the frameworks as we use them, and first look when a spot on
         the calendar opens up.
       </p>
-      <form class="join-form" action="#" method="post" onsubmit="return false;">
+      <form class="join-form" id="join-form" novalidate>
         <label for="email-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
-        <input id="email-input" type="email" name="email" placeholder="you@yourbrand.com" required>
-        <button type="submit" class="link-cta primary">Get On →</button>
+        <input id="email-input" type="email" name="email" placeholder="you@yourbrand.com" autocomplete="email" required>
+        <button type="submit" class="link-cta primary" id="join-submit">Get On →</button>
       </form>
+      <p class="join-status" id="join-status" role="status" aria-live="polite" hidden></p>
 
       <div class="join-alt">
         <a href="mailto:hello@junkyardbutcher.com" class="link-cta quiet">Rather just talk? Start a conversation →</a>
@@ -1542,6 +1634,100 @@
       el.addEventListener('click', function(){ openLightbox(el); });
       el.addEventListener('keydown', function(e){
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(el); }
+      });
+    });
+  }
+
+  // ============ THE BLOCK — Klaviyo list subscribe ============
+  // Client-side endpoint. Public API key only — never paste a private key here,
+  // this file is served to the world. Docs: developers.klaviyo.com → create_client_subscription
+  //
+  //   COMPANY_ID = Klaviyo → Settings → API keys → Public API key / Site ID (6 chars)
+  //   LIST_ID    = Klaviyo → Audience → Lists → The Block → Settings → List ID
+  //
+  // Leave the list set to double opt-in so the confirmation email does the verifying.
+  var KLAVIYO_COMPANY_ID = 'REPLACE_ME_PUBLIC_KEY';
+  var KLAVIYO_LIST_ID    = 'REPLACE_ME_LIST_ID';
+  var KLAVIYO_REVISION   = '2026-07-15';
+
+  var joinForm = document.getElementById('join-form');
+  if (joinForm) {
+    var joinInput  = document.getElementById('email-input');
+    var joinButton = document.getElementById('join-submit');
+    var joinStatus = document.getElementById('join-status');
+    var joinBusy   = false;
+
+    var say = function(msg, tone){
+      joinStatus.textContent = msg;
+      joinStatus.className = 'join-status is-' + tone;
+      joinStatus.hidden = false;
+    };
+
+    var looksLikeEmail = function(v){
+      var at = v.indexOf('@');
+      return at > 0 && v.indexOf('.', at) > at + 1 && v.length > 5 && v.indexOf(' ') === -1;
+    };
+
+    var done = function(){
+      joinBusy = false;
+      joinButton.disabled = false;
+    };
+
+    joinForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (joinBusy) return;
+
+      var email = (joinInput.value || '').trim();
+
+      if (!looksLikeEmail(email)) {
+        say('That address won\u2019t reach you. Check it and try again.', 'bad');
+        joinInput.focus();
+        return;
+      }
+      if (KLAVIYO_COMPANY_ID.indexOf('REPLACE_ME') === 0) {
+        say('The list isn\u2019t wired up yet. Email hello@junkyardbutcher.com and I\u2019ll add you by hand.', 'bad');
+        return;
+      }
+
+      joinBusy = true;
+      joinButton.disabled = true;
+      say('Sending\u2026', 'wait');
+
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(KLAVIYO_COMPANY_ID), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'revision': KLAVIYO_REVISION },
+        body: JSON.stringify({
+          data: {
+            type: 'subscription',
+            attributes: {
+              profile: {
+                data: {
+                  type: 'profile',
+                  attributes: {
+                    email: email,
+                    subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } }
+                  }
+                }
+              }
+            },
+            relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
+          }
+        })
+      })
+      .then(function(res){
+        if (res.status === 202 || res.ok) {
+          joinForm.hidden = true;
+          say('You\u2019re on the block. Check your inbox and confirm \u2014 nothing sends until you do.', 'good');
+        } else if (res.status === 429) {
+          say('Too many tries at once. Give it a minute and go again.', 'bad');
+        } else {
+          say('That didn\u2019t go through. Email hello@junkyardbutcher.com and I\u2019ll add you by hand.', 'bad');
+        }
+        done();
+      })
+      .catch(function(){
+        say('Connection dropped before that landed. Try again, or email hello@junkyardbutcher.com.', 'bad');
+        done();
       });
     });
   }
