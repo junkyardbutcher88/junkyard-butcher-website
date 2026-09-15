@@ -91,10 +91,36 @@ Order reads: here are the brands → here's who did it → here's how he works.
 
 ---
 
+**One brand page, not a system of them.** Decided 15 Sep 2026. The idea started as
+"preview on the homepage, a media page per brand" — right instinct, wrong scope. The
+actual driver is that CVALT isn't a case study, it's a *scope of work*: video, app store
+listing, packaging, sticker runs, email & SMS, brand system, event coverage. Six
+workstreams don't fit a tile no matter how many columns the collage gets. Every other
+client is a single-discipline engagement — Premium Blossom is a shoot, Farm Fiend is a
+shoot, Kannabis is a content cadence — and those fit a tile fine.
+
+So: build `work/cvalt.html` only. A brand earns its own page later by accumulating
+roughly one real reel, three-plus stills, and one outcome line. Below that bar a page
+makes the work look *smaller* than the tile did — five thin pages read worse than five
+dense tiles. Kannabis is the likeliest second, on volume (12+ reels plus the deal
+designs), and it would be a content-system page rather than a scope page.
+
+**Brand pages open with the stat line, then the reel.** Outcome above the fold
+($4.6M attributed, 66%→86% deliverability), reel underneath. Note this only works for a
+brand that *has* numbers — for one that doesn't, the layout opens on an empty promise.
+Another reason CVALT goes first.
+
+**Homepage previews must still move.** Whatever links out to a brand page, the preview
+tile keeps playing the silent `loop.mp4` the encoder already generates (muted, autoplay
+on scroll into view, mono until interacted with). Inline motion on the homepage is a
+strength we already have — don't trade it for a click.
+
+---
+
 ## Open
 
 - Cannabis-only, or local culture brands including cannabis? There's a finished
   La Michoacán menu ad and a High90s reel in the Drive with no home on the site.
-- The CVALT card carries a 16:9 brand film and a vertical reel poster. Does the card go
-  widescreen, or carry both?
 - The Block has a working capture form and no welcome email behind it.
+- `A Higher Xperience` carries an Archive tag with no work attached and nothing found in
+  the Drive. Drop the tag or find the assets.
