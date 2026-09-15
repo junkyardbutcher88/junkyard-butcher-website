@@ -80,7 +80,12 @@
      one visual world by design, painted explicitly on every host theme. */
 
   *,*::before,*::after{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+  html{
+    scroll-behavior:smooth;
+    /* the header is sticky at 64px — without this every in-page link lands
+       with its own heading hidden underneath it, #hire included */
+    scroll-padding-top:84px;
+  }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
@@ -1225,6 +1230,109 @@
     align-items:center;
   }
 
+  /* ============ HIRE ============
+     The door. Everything above this section is an argument; this is where
+     someone acts on it. Sits directly under the work, because that is the
+     moment a reader is most convinced, and again in the nav. */
+  .hire{ border-top:1px solid var(--line); }
+  .hire-inner{ padding-block:clamp(56px,8vw,96px); }
+  .hire-title{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem,6vw,4.2rem);
+    line-height:0.92;
+    text-transform:uppercase;
+    margin:10px 0 0;
+  }
+  .hire-copy{
+    margin:22px 0 0;
+    max-width:56ch;
+    color:var(--bone-dim);
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+  .hire-form{
+    margin-top:38px;
+    max-width:720px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .hire-field{ display:flex; flex-direction:column; gap:8px; }
+  .hire-field.wide{ grid-column:1 / -1; }
+  .hire-field label{
+    font-family:var(--font-mono);
+    font-size:0.66rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--smoke);
+  }
+  .hire-field input,
+  .hire-field select,
+  .hire-field textarea{
+    background:transparent;
+    border:1px solid var(--line-strong);
+    color:var(--bone);
+    font-family:var(--font-mono);
+    font-size:0.88rem;
+    padding:13px 14px;
+    width:100%;
+    min-width:0;
+    border-radius:0;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  .hire-field textarea{ resize:vertical; min-height:104px; line-height:1.55; }
+  .hire-field select{
+    /* the arrow, drawn rather than inherited, so it matches in both themes */
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0h10L5 6z' fill='%238a8371'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:34px;
+  }
+  .hire-field select option{ background:var(--iron); color:var(--bone); }
+  .hire-field input::placeholder,
+  .hire-field textarea::placeholder{ color:var(--smoke); }
+  .hire-field input:focus-visible,
+  .hire-field select:focus-visible,
+  .hire-field textarea:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; border-color:var(--acid); }
+  .hire-field.is-off input,
+  .hire-field.is-off select,
+  .hire-field.is-off textarea{ border-color:var(--rust); }
+  .hire-actions{
+    grid-column:1 / -1;
+    display:flex; flex-wrap:wrap; gap:16px 30px;
+    align-items:center;
+    margin-top:4px;
+  }
+  .hire-actions button[disabled]{ opacity:0.45; cursor:not-allowed; }
+  .hire-note{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:var(--smoke);
+  }
+  .hire-fallback{
+    margin-top:26px;
+    max-width:720px;
+    padding:20px;
+    border:1px solid var(--rust);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .hire-fallback label{
+    font-family:var(--font-mono);
+    font-size:0.66rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--smoke);
+  }
+  .hire-fallback textarea{
+    background:transparent; border:1px solid var(--line-strong);
+    color:var(--bone); font-family:var(--font-mono);
+    font-size:0.82rem; line-height:1.6; padding:12px 13px;
+    width:100%; resize:vertical; border-radius:0;
+  }
+  @media (max-width:620px){
+    .hire-form{ grid-template-columns:1fr; }
+  }
+
   /* ============ FOOTER ============ */
   footer{
     border-top:1px solid var(--line);
@@ -1286,7 +1394,7 @@
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <a href="#join" class="link-cta quiet">Start a conversation</a>
+    <a href="#hire" class="link-cta quiet">Start a conversation</a>
   </nav>
 </header>
 
@@ -1322,7 +1430,7 @@
       refuse to get lost in algorithm filler.
     </p>
     <div class="hero-actions">
-      <a href="#join" class="link-cta primary">Get on the Butcher's Block →</a>
+      <a href="#hire" class="link-cta primary">Start a conversation →</a>
       <a href="#work" class="link-cta">See the Work ↓</a>
     </div>
 
@@ -1351,9 +1459,7 @@
         <span>CVALT</span>
         <span>Kannabis Delivery</span>
         <span>Bosky Genetics</span>
-        <span>A Higher Xperience <em class="mark-archive">Archive</em></span>
         <span>Premium Blossom</span>
-        <span>Herb and Joy <em class="mark-archive">Archive</em></span>
         <span>Farm Fiend</span>
       </div>
     </div>
@@ -1506,8 +1612,9 @@
         <h2 class="section-title">The Cuts</h2>
       </div>
       <p class="section-note">
-        Most of this happens to be cannabis — that's where brands let one operator run the whole
-        system instead of babysitting four vendors. The frameworks don't know what's in the jar.
+        Cannabis, mostly &mdash; the hardest place in marketing to stay legal and still be worth
+        looking at. Carrier rules, platform bans, a county line that changes what you're allowed to
+        say. That pressure is why the systems have to be good. The frameworks don't know what's in the jar.
       </p>
     </div>
 
@@ -1681,6 +1788,69 @@
     </div>
   </section>
 
+  <!-- ============ HIRE ============
+       Was: every "Start a conversation" on the site pointed at the newsletter.
+       A visitor clicked the highest-intent button we had and got asked to join
+       a mailing list. This is the actual door, and it sits under the work. -->
+  <section class="hire" id="hire">
+    <div class="wrap hire-inner">
+      <div class="eyebrow">Start a Conversation</div>
+      <h2 class="hire-title">Bring Me a <span class="cut">Job</span></h2>
+      <p class="hire-copy">
+        Tell me what you're working on and what's not landing. You get a reply from me &mdash; the
+        person who'd do the work &mdash; inside two business days, with an honest read on whether
+        I'm the right call.
+      </p>
+
+      <form class="hire-form" id="hire-form" novalidate>
+        <div class="hire-field">
+          <label for="hire-name">Your name</label>
+          <input id="hire-name" name="name" type="text" autocomplete="name" placeholder="Gabe Q" required>
+        </div>
+        <div class="hire-field">
+          <label for="hire-brand">Brand</label>
+          <input id="hire-brand" name="brand" type="text" autocomplete="organization" placeholder="The one on the jar" required>
+        </div>
+        <div class="hire-field">
+          <label for="hire-email">Email</label>
+          <input id="hire-email" name="email" type="email" autocomplete="email" placeholder="you@yourbrand.com" required>
+        </div>
+        <div class="hire-field">
+          <label for="hire-need">What you need</label>
+          <select id="hire-need" name="need">
+            <option value="">Pick one &mdash; or don't, we'll work it out</option>
+            <option>Brand strategy &amp; the audit</option>
+            <option>Brand identity system</option>
+            <option>Content &amp; video</option>
+            <option>Email &amp; SMS</option>
+            <option>The whole system</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="hire-field wide">
+          <label for="hire-msg">What's going on</label>
+          <textarea id="hire-msg" name="message" placeholder="What you've already built, what isn't working, and when you need it by." required></textarea>
+        </div>
+        <div class="hire-actions">
+          <button type="submit" class="link-cta primary" id="hire-submit">Send It &rarr;</button>
+          <span class="hire-note">Or email <a href="mailto:hello@junkyardbutcher.com?subject=Junkyard%20Butcher%20%E2%80%94%20new%20job">hello@junkyardbutcher.com</a></span>
+        </div>
+      </form>
+      <p class="join-status" id="hire-status" role="status" aria-live="polite" hidden></p>
+
+      <!-- Shown only when there's no form backend, or the POST failed. The
+           message is never lost: it's here, selectable, with the draft link. -->
+      <div class="hire-fallback" id="hire-fallback" hidden>
+        <label for="hire-fallback-text">Your message</label>
+        <textarea id="hire-fallback-text" readonly rows="8"></textarea>
+        <div class="hire-actions">
+          <a class="link-cta primary" id="hire-fallback-open" href="mailto:hello@junkyardbutcher.com">Open it in mail &rarr;</a>
+          <button type="button" class="link-cta" id="hire-copy-btn">Copy the text</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FOUNDER REEL ============ -->
   <section class="founder">
     <div class="wrap founder-grid">
@@ -1732,7 +1902,7 @@
       <p class="join-status" id="join-status" role="status" aria-live="polite" hidden></p>
 
       <div class="join-alt">
-        <a href="mailto:hello@junkyardbutcher.com" class="link-cta quiet">Rather just talk? Start a conversation →</a>
+        <a href="#hire" class="link-cta quiet">Rather just hire me? Start a conversation →</a>
         <a href="#work" class="link-cta quiet">Or see the work first →</a>
       </div>
     </div>
@@ -1754,6 +1924,7 @@
       <a href="#process">Process</a>
       <a href="#services">Services</a>
       <a href="philosophy.html">Philosophy</a>
+      <a href="#hire">Hire</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
     </div>
     <div class="foot-copy">© 2026 Junkyard Butcher. Cut to order — never scraped, never templated.</div>
@@ -2001,6 +2172,137 @@
   var KLAVIYO_COMPANY_ID = 'R9Hc7Z';
   var KLAVIYO_LIST_ID    = 'VAq2Gw';
   var KLAVIYO_REVISION   = '2026-07-15';
+
+
+  // ---- HIRE FORM -------------------------------------------------------
+  // Delivery honesty rule: never tell someone their message arrived unless it
+  // demonstrably did. With no endpoint configured the only path is the
+  // visitor's own mail client, which can silently do nothing (no mail app, a
+  // locked-down browser, a webmail-only machine) -- so in that mode we hand
+  // them the composed message and say plainly that they have to send it.
+  // Set HIRE_ENDPOINT to a form backend (Formspree, Web3Forms) and the form
+  // switches to a real POST with a real receipt.
+  //
+  // Deliberately NOT Klaviyo: that API subscribes a profile to marketing, and
+  // someone asking for a quote has not consented to a newsletter.
+  var HIRE_ENDPOINT = '';
+
+  var hireForm = document.getElementById('hire-form');
+  if (hireForm) {
+    var hireStatus = document.getElementById('hire-status');
+    var hireButton = document.getElementById('hire-submit');
+    var hireOut    = document.getElementById('hire-fallback');
+    var hireText   = document.getElementById('hire-fallback-text');
+    var hireOpen   = document.getElementById('hire-fallback-open');
+    var hireCopy   = document.getElementById('hire-copy-btn');
+    var hireBusy   = false;
+
+    var hSay = function(msg, tone){
+      hireStatus.textContent = msg;
+      hireStatus.className = 'join-status is-' + tone;
+      hireStatus.hidden = false;
+    };
+    var val  = function(id){ return (document.getElementById(id).value || '').trim(); };
+    var mark = function(id, bad){
+      document.getElementById(id).parentNode.classList[bad ? 'add' : 'remove']('is-off');
+    };
+    var emailish = function(v){
+      var at = v.indexOf('@');
+      return at > 0 && v.indexOf('.', at) > at + 1 && v.length > 5 && v.indexOf(' ') === -1;
+    };
+
+    var plain = function(f){
+      return 'Name:  ' + f.name  + '\n' +
+             'Brand: ' + f.brand + '\n' +
+             'Email: ' + f.email + '\n' +
+             'Needs: ' + (f.need || 'not specified') + '\n\n' +
+             f.message + '\n';
+    };
+    var mailUrl = function(f){
+      return 'mailto:hello@junkyardbutcher.com' +
+             '?subject=' + encodeURIComponent('New job — ' + f.brand) +
+             '&body='    + encodeURIComponent(plain(f));
+    };
+
+    hireForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (hireBusy) return;
+
+      var f = {
+        name:    val('hire-name'),
+        brand:   val('hire-brand'),
+        email:   val('hire-email'),
+        need:    val('hire-need'),
+        message: val('hire-msg')
+      };
+
+      var bad = null;
+      mark('hire-name',  !f.name);            if (!f.name)            bad = bad || 'hire-name';
+      mark('hire-brand', !f.brand);           if (!f.brand)           bad = bad || 'hire-brand';
+      mark('hire-email', !emailish(f.email)); if (!emailish(f.email)) bad = bad || 'hire-email';
+      mark('hire-msg',   !f.message);         if (!f.message)         bad = bad || 'hire-msg';
+      if (bad) {
+        hSay('Fill in the marked fields and send it again.', 'bad');
+        document.getElementById(bad).focus();
+        return;
+      }
+
+      // --- no backend: hand the message over, don't claim to have it --------
+      if (!HIRE_ENDPOINT) {
+        hireText.value = plain(f);
+        hireOpen.href  = mailUrl(f);
+        hireOut.hidden = false;
+        hSay('Almost — one more tap. Your mail app should have opened with this ready to go; ' +
+             'hit send and it’s with me. If nothing opened, copy the text below and send it to ' +
+             'hello@junkyardbutcher.com.', 'wait');
+        hireOut.scrollIntoView({ block: 'nearest' });
+        try { window.location.href = mailUrl(f); } catch (err) {}
+        return;
+      }
+
+      // --- real endpoint: a receipt we can actually stand behind ------------
+      hireBusy = true;
+      hireButton.disabled = true;
+      hSay('Sending…', 'wait');
+
+      fetch(HIRE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'accept': 'application/json' },
+        body: JSON.stringify(f)
+      })
+      .then(function(res){
+        if (res.ok || res.status === 200 || res.status === 202) {
+          hireForm.hidden = true;
+          hSay('Got it. You’ll hear back from me inside two business days — from me, ' +
+               'not an autoresponder.', 'good');
+        } else {
+          throw new Error('bad status');
+        }
+      })
+      .catch(function(){
+        hireText.value = plain(f);
+        hireOpen.href  = mailUrl(f);
+        hireOut.hidden = false;
+        hSay('That didn’t go through on my end — not your fault. Copy the text below and ' +
+             'send it to hello@junkyardbutcher.com and I’ll pick it up there.', 'bad');
+      })
+      .then(function(){ hireBusy = false; hireButton.disabled = false; });
+    });
+
+    if (hireCopy) {
+      hireCopy.addEventListener('click', function(){
+        hireText.select();
+        var done = false;
+        try { done = document.execCommand('copy'); } catch (err) {}
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(hireText.value).then(function(){
+            hireCopy.textContent = 'Copied ✓';
+          }, function(){});
+        }
+        if (done) hireCopy.textContent = 'Copied ✓';
+      });
+    }
+  }
 
   var joinForm = document.getElementById('join-form');
   if (joinForm) {
