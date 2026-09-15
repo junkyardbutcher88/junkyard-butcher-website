@@ -949,13 +949,6 @@
     color:var(--bone-dim); font-variant-numeric:tabular-nums; margin-right:auto;
   }
   .jb-time i{ font-style:normal; color:var(--smoke); }
-  .jb-also{
-    margin:10px 0 0; font-family:var(--font-mono); font-size:0.68rem;
-    letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke);
-  }
-  .jb-also a{ color:var(--smoke); border-bottom:1px solid rgba(138,131,113,.5); }
-  .jb-also a:hover{ color:var(--acid); border-bottom-color:var(--acid); }
-
   @media (prefers-reduced-motion: reduce){
     .jb-slash line{ opacity:0 !important; animation:none !important; }
     .jb.is-cut .jb-half.a, .jb.is-cut .jb-half.b{ transform:none; opacity:0; }
@@ -1018,6 +1011,27 @@
   /* video tiles keep the play cursor, not the zoom one */
   [data-lightbox-video],
   [data-lightbox-external]{ cursor:pointer !important; }
+
+  /* album nav — one set of media per work card, arrow/swipe navigable */
+  .lightbox-nav{
+    display:flex; align-items:center; justify-content:center;
+    gap:18px; margin-top:16px;
+  }
+  .lightbox-nav[hidden]{ display:none; }   /* display:flex would beat the attribute */
+  .lightbox-nav button{
+    width:34px; height:34px; padding:0; cursor:pointer;
+    background:transparent; border:1px solid var(--line-strong); color:var(--bone);
+    font-family:var(--font-body); font-size:1.15rem; line-height:1;
+    display:grid; place-items:center;
+    transition:border-color .15s, color .15s;
+  }
+  .lightbox-nav button:hover{ border-color:var(--acid); color:var(--acid); }
+  .lightbox-nav button:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; }
+  .lightbox-count{
+    font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.14em;
+    color:var(--smoke); font-variant-numeric:tabular-nums;
+    min-width:6ch; text-align:center;
+  }
 
   /* enlarged stills: contain, not crop — we want the whole frame */
   .lightbox-media img.lightbox-full{
@@ -1414,29 +1428,22 @@
         <h2 class="section-title">What Gets Cut</h2>
       </div>
       <p class="section-note">
-        Four disciplines, one operator, applied together instead of handed off between four different
-        agencies who've never talked to each other.
+        Four disciplines, one operator, in the order the work actually happens — strategy sets the
+        frame, identity gives it a shape, content fills it, lifecycle puts it in front of people.
+        Handed off between four agencies, that order falls apart.
       </p>
     </div>
     <div class="services-list">
       <div class="service-row">
         <div class="service-num">01</div>
-        <div class="service-name">Content<br>Creation</div>
+        <div class="service-name">Brand Strategy<br>Systems</div>
         <p class="service-desc">
-          Video and social built with more thought than most brands put into a full campaign — event
-          recap, on-the-ground capture, and edits shot to make people who weren't there wish they had been.
+          The 7-11-4 and 80/20 hybrid, applied to your actual business — not a framework taught for its
+          own sake, but the scaffolding everything below this line gets built on.
         </p>
       </div>
       <div class="service-row">
         <div class="service-num">02</div>
-        <div class="service-name">Email &amp; SMS<br>Marketing</div>
-        <p class="service-desc">
-          Lifecycle systems that meet your list where they actually are — inbox and phone — instead of
-          shouting into a feed and hoping the algorithm's in a good mood that day.
-        </p>
-      </div>
-      <div class="service-row">
-        <div class="service-num">03</div>
         <div class="service-name">Brand Identity<br>Systems</div>
         <p class="service-desc">
           Marks, type, color, tone, and the rules that hold them together — built to survive contact
@@ -1444,11 +1451,19 @@
         </p>
       </div>
       <div class="service-row">
-        <div class="service-num">04</div>
-        <div class="service-name">Brand Strategy<br>Systems</div>
+        <div class="service-num">03</div>
+        <div class="service-name">Content<br>Creation</div>
         <p class="service-desc">
-          The 7-11-4 and 80/20 hybrid, applied to your actual business — not a framework taught for its
-          own sake, but the scaffolding underneath everything else we build.
+          Video and social built with more thought than most brands put into a full campaign — event
+          recap, on-the-ground capture, and edits shot to make people who weren't there wish they had been.
+        </p>
+      </div>
+      <div class="service-row">
+        <div class="service-num">04</div>
+        <div class="service-name">Email &amp; SMS<br>Marketing</div>
+        <p class="service-desc">
+          Lifecycle systems that meet your list where they actually are — inbox and phone — instead of
+          shouting into a feed and hoping the algorithm's in a good mood that day.
         </p>
       </div>
     </div>
@@ -1799,14 +1814,26 @@
         '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>' +
         '<div class="lightbox-media"></div>' +
         '<p class="lightbox-caption" id="lightbox-caption"></p>' +
+        '<div class="lightbox-nav" hidden>' +
+          '<button type="button" class="lightbox-prev" aria-label="Previous">&#8249;</button>' +
+          '<span class="lightbox-count" aria-live="polite"></span>' +
+          '<button type="button" class="lightbox-next" aria-label="Next">&#8250;</button>' +
+        '</div>' +
       '</div>';
     document.body.appendChild(overlay);
     var media = overlay.querySelector('.lightbox-media');
     var caption = overlay.querySelector('.lightbox-caption');
     var closeBtn = overlay.querySelector('.lightbox-close');
+    var navEl    = overlay.querySelector('.lightbox-nav');
+    var prevBtn  = overlay.querySelector('.lightbox-prev');
+    var nextBtn  = overlay.querySelector('.lightbox-next');
+    var countEl  = overlay.querySelector('.lightbox-count');
     var lastFocused = null;
+    var group = [], gi = 0;
 
-    function openLightbox(el){
+    // Render one item. Handles all three kinds so arrowing through a set can
+    // move between a reel and a still without special-casing.
+    function renderItem(el){
       var cap = el.getAttribute('data-lightbox-caption') || '';
       var poster = el.getAttribute('data-lightbox-poster') || '';
       var video = el.getAttribute('data-lightbox-video');
@@ -1824,6 +1851,28 @@
         media.innerHTML = '<img class="lightbox-full" src="' + still + '" alt="' + cap.replace(/"/g, '&quot;') + '">';
       }
       caption.textContent = cap;
+    }
+
+    // Move within the current set, wrapping at both ends so an arrow key
+    // always does something.
+    function show(i){
+      if (!group.length) return;
+      if (i < 0) i = group.length - 1;
+      if (i >= group.length) i = 0;
+      gi = i;
+      renderItem(group[gi]);
+      countEl.textContent = (gi + 1) + ' / ' + group.length;
+      navEl.hidden = group.length < 2;
+    }
+
+    function openLightbox(el){
+      // The album is everything openable inside the same work card.
+      var scope = (el.closest && (el.closest('.work-card') || el.closest('.work-frame'))) || document;
+      group = Array.prototype.slice.call(
+        scope.querySelectorAll('[data-lightbox-video], [data-lightbox-external], [data-lightbox-image]')
+      );
+      if (group.indexOf(el) === -1) group = [el];
+      show(group.indexOf(el));
       lastFocused = document.activeElement;
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
@@ -1835,13 +1884,35 @@
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       media.innerHTML = '';
+      group = []; gi = 0;
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
+
+    prevBtn.addEventListener('click', function(){ show(gi - 1); });
+    nextBtn.addEventListener('click', function(){ show(gi + 1); });
+
+    // swipe, for touch
+    var tsx = null, tsy = null;
+    overlay.addEventListener('touchstart', function(e){
+      if (e.touches.length === 1) { tsx = e.touches[0].clientX; tsy = e.touches[0].clientY; }
+    }, {passive:true});
+    overlay.addEventListener('touchend', function(e){
+      if (tsx === null) return;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - tsx, dy = t.clientY - tsy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? gi + 1 : gi - 1);
+      tsx = null; tsy = null;
+    }, {passive:true});
     overlay.addEventListener('click', function(e){ if (e.target === overlay) closeLightbox(); });
     closeBtn.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', function(e){
       if (!overlay.classList.contains('is-open')) return;
       if (e.key === 'Escape') { closeLightbox(); return; }
+      // don't steal the arrows while a video has focus — there they seek
+      if (document.activeElement && document.activeElement.tagName !== 'VIDEO') {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); show(gi - 1); return; }
+        if (e.key === 'ArrowRight') { e.preventDefault(); show(gi + 1); return; }
+      }
       if (e.key === 'Tab') {
         var focusable = overlay.querySelectorAll('a[href], button:not([disabled])');
         if (!focusable.length) return;

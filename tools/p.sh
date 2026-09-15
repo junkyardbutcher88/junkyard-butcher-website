@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")/.."
 git add -A
-git commit -m "Fix: frame grain and gradient overlays were eating pointer events, blocking hover and clicks on stills"
+git commit -m "Lightbox becomes an album: arrow keys, swipe, per-card grouping. Menu reordered into operational sequence. Drop dead CSS."
 git push
 echo
 git log --oneline -1
