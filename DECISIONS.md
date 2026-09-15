@@ -183,6 +183,35 @@ about a tenth of the shot.
 
 ---
 
+## Selling
+
+**Hero direction D: the name at full scale, three facts under it.** Chosen 15 Sep 2026 from four
+options. The old top spent its first move on voice — an eyebrow of disciplines, then the logotype,
+then a manifesto — so a reader met the attitude before the offer. D keeps JUNKYARD BUTCHER at display
+size and puts three adjective-free lines directly beneath: what's sold, that it's one operator, and
+$4.6M attributed. "No templates. No fucking filler." survives as a rust kicker lower down, where it
+is voice rather than proposition. Rejected: proof-first (opens on a client's number), role-first
+(clearest and least distinctive), belief-first (still asks the reader to work).
+
+**The Dig, $1,500, two weeks, credited in full.** The Process section had promised an audit since
+launch and never let anyone buy one. Naming it after the site's own verb — DIG DEEP, dig before you
+buy — cost no new vocabulary. $1,500 over $750 (prices you as available, wrong signal beside a $4.6M
+case study) and over $2,500 (consultant positioning, longer close). The credit mechanic is what makes
+the number stop mattering: it turns a price into a deposit, and it means qualifying is paid work
+rather than a free discovery call.
+
+**Price signal reversed.** An earlier call on this site was to show no prices. That was wrong: a page
+with no number loses the big client (who assumes you're small) and attracts the small one (who emails
+anyway). One named entry price fixes both without boxing in custom work.
+
+**Nav in nouns.** Process → The Dig, Services → What You Get, and Hire added. Four abstractions in a
+row told a first-time visitor nothing about what was behind them.
+
+**"Est. Now" removed.** A good joke that answered, for a buyer weighing risk, a question they were
+already asking. Replaced with "Cut to Order" in the slug and "One Operator" in the stamp.
+
+---
+
 ## Open
 
 - Cannabis-only, or local culture brands including cannabis? There's a finished

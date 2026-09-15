@@ -398,15 +398,29 @@
     max-width:640px;
     margin-top:28px;
   }
+  /* Three facts, stacked, no adjectives in them. The name still lands
+     first at full size; this stops the reader having to work out what
+     is being sold. */
+  .hero-facts{
+    position:relative; z-index:1;
+    margin-top:26px;
+    display:flex; flex-direction:column; gap:5px;
+    font-family:var(--font-mono);
+    font-size:0.94rem;
+    line-height:1.45;
+    letter-spacing:0.02em;
+    color:var(--bone);
+  }
+  .hero-facts .num{ color:var(--acid); }
+  @media (max-width:520px){ .hero-facts{ font-size:0.86rem; } }
   .hero-tagline{
     font-family:var(--font-mono);
     font-size:0.82rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--bone-dim);
-    margin-top:20px;
+    color:var(--rust);
+    margin-top:22px;
   }
-  .hero-tagline .rust{ color:var(--rust); }
   .hero-actions{
     display:flex; flex-wrap:wrap; gap:clamp(28px,4vw,48px);
     margin-top:44px;
@@ -1230,6 +1244,64 @@
     align-items:center;
   }
 
+  /* ============ THE DIG ============
+     The entry product. The Process section has always promised an audit;
+     this is the one you can actually buy, with the number said out loud
+     because a price you have to ask for reads as a price that moves. */
+  .dig{ border-top:1px solid var(--line); }
+  .dig-inner{
+    padding-block:clamp(52px,7vw,84px);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(28px,5vw,64px);
+    align-items:start;
+  }
+  @media (max-width:860px){ .dig-inner{ grid-template-columns:1fr; } }
+  .dig-title{
+    font-family:var(--font-display);
+    font-size:clamp(2.6rem,7vw,4.6rem);
+    line-height:0.92;
+    text-transform:uppercase;
+    margin:10px 0 0;
+  }
+  .dig-title .cut{ color:var(--rust); }
+  .dig-price{
+    margin-top:20px;
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px;
+    font-family:var(--font-mono);
+    font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--smoke);
+  }
+  .dig-price .fig{
+    font-family:var(--font-display);
+    font-size:clamp(2rem,4.5vw,2.8rem);
+    letter-spacing:0;
+    line-height:1;
+    color:var(--acid);
+    font-variant-numeric:tabular-nums;
+  }
+  .dig-copy{ margin-top:20px; color:var(--bone-dim); max-width:52ch; line-height:1.62; }
+  .dig-copy em{ font-style:normal; color:var(--bone); }
+  .dig-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; background:var(--line); }
+  .dig-list li{
+    background:var(--iron-2);
+    padding:15px 18px;
+    border-left:2px solid var(--acid);
+    color:var(--bone-dim);
+    line-height:1.55;
+  }
+  .dig-list li b{ color:var(--bone); font-weight:600; }
+  .dig-terms{
+    margin-top:18px;
+    padding:16px 18px;
+    border:1px solid var(--line-strong);
+    font-family:var(--font-mono);
+    font-size:0.8rem; line-height:1.65;
+    color:var(--bone-dim);
+  }
+  .dig-terms b{ color:var(--acid); font-weight:400; }
+  .dig-actions{ margin-top:24px; display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; }
+
   /* ============ HIRE ============
      The door. Everything above this section is an argument; this is where
      someone acts on it. Sits directly under the work, because that is the
@@ -1373,7 +1445,7 @@
 
 <div class="grain" aria-hidden="true"></div>
 <div class="progress-bar" aria-hidden="true"></div>
-<span class="slug slug-left">Junkyard Butcher &mdash; Est. Now</span>
+<span class="slug slug-left">Junkyard Butcher &mdash; Cut to Order</span>
 <span class="slug slug-right">Cut to Order &mdash; No. 001</span>
 
 <header>
@@ -1387,10 +1459,10 @@
     </a>
     <div class="nav-links" id="nav-links">
       <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#services">Services</a>
+      <a href="#dig">The Dig</a>
+      <a href="#services">What You Get</a>
       <a href="philosophy.html">Philosophy</a>
-      <a href="#join">Join</a>
+      <a href="#hire">Hire</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -1418,19 +1490,24 @@
   <!-- ============ HERO ============ -->
   <section class="hero wrap">
     <div class="hero-ghost" aria-hidden="true">CUT</div>
-    <div class="eyebrow">Brand Strategy &middot; Identity &middot; Content &middot; Lifecycle Marketing</div>
     <h1 class="hero-headline">
       JUNKYARD<br>
       <span class="line2">BUTCHER</span>
     </h1>
-    <p class="hero-tagline">Bespoke Design + Content Creation — <span class="rust">No templates. No fucking filler.</span></p>
+    <p class="hero-facts">
+      <span>Brand strategy, identity, content, email &amp; SMS.</span>
+      <span>One operator, start to finish.</span>
+      <span class="num">$4.6M attributed for one client last year.</span>
+    </p>
     <p class="hero-sub">
       We don't buy new. We dig through what a brand already has, find the twenty percent that actually cuts,
       and sharpen it until it can't be ignored — content, identity, and lifecycle marketing for people who
       refuse to get lost in algorithm filler.
     </p>
+    <p class="hero-tagline">No templates. No fucking filler.</p>
     <div class="hero-actions">
       <a href="#hire" class="link-cta primary">Start a conversation →</a>
+      <a href="#dig" class="link-cta">Start with The Dig — $1,500 ↓</a>
       <a href="#work" class="link-cta">See the Work ↓</a>
     </div>
 
@@ -1442,7 +1519,7 @@
       <circle cx="100" cy="100" r="60" fill="none" stroke="var(--rust)" stroke-width="1"/>
       <text font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="3" fill="var(--bone-dim)">
         <textPath href="#stampCircle" startOffset="0%">
-          JUNKYARD BUTCHER &#8226; CUT TO ORDER &#8226; EST. NOW &#8226;
+          JUNKYARD BUTCHER &#8226; CUT TO ORDER &#8226; ONE OPERATOR &#8226;
         </textPath>
       </text>
       <path d="M85 108 L100 92 L115 108 M100 92 V128" stroke="var(--acid)" stroke-width="3" fill="none" stroke-linecap="square"/>
@@ -1516,6 +1593,46 @@
           <span>The belief system, the frameworks in depth, and where the name comes from.</span>
         </p>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ============ THE DIG ============
+       The Process section above promises an audit and never let anyone buy
+       one. Named after the site's own verb — DIG DEEP, dig before you buy —
+       so it costs no new vocabulary. -->
+  <section class="dig" id="dig">
+    <div class="wrap dig-inner">
+      <div>
+        <div class="eyebrow">The Entry Point</div>
+        <h2 class="dig-title">The <span class="cut">Dig</span></h2>
+        <div class="dig-price">
+          <span class="fig">$1,500</span>
+          <span>Two weeks &middot; delivered, not scheduled</span>
+        </div>
+        <p class="dig-copy">
+          Before a single new asset gets made, I go through everything you've already built and find
+          the twenty percent that's actually working. <em>Most brands don't have a content problem.
+          They have a problem finding what already worked and doing more of it.</em>
+        </p>
+        <div class="dig-terms">
+          <b>Credited in full against the project</b> if you go ahead within 30 days. So the worst case
+          is you pay for two weeks of someone going through your business properly and walk away with
+          the plan anyway.
+        </div>
+        <div class="dig-actions">
+          <a href="#hire" class="link-cta primary" data-prefill="The Dig — the $1,500 audit">Book The Dig &rarr;</a>
+          <a href="philosophy.html" class="link-cta quiet">Why it works this way &rarr;</a>
+        </div>
+      </div>
+
+      <ul class="dig-list">
+        <li><b>Everything you've already built, gone through.</b> Posts, the list, the old identity, packaging, the site.</li>
+        <li><b>The twenty percent that works</b> &mdash; named, ranked, and the reason each one works.</li>
+        <li><b>The rest, and what to kill.</b> Including the things you're paying for out of habit.</li>
+        <li><b>A 90-day content and lifecycle plan</b> built only on the twenty percent.</li>
+        <li><b>A 20-minute recorded walkthrough</b> &mdash; so it's a conversation, not a PDF nobody opens.</li>
+      </ul>
     </div>
   </section>
 
@@ -1651,6 +1768,22 @@
                data-lightbox-caption="Alter-Lean cannabis tincture &mdash; packaging and product shot."></div>
           <div class="tile-rest" data-lightbox-image="assets/cvalt_floracal.jpg"
                data-lightbox-caption="Floracal Farms pre-roll &mdash; product photography for the CVALT catalog."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_diiiips.jpg"
+               data-lightbox-caption="Diiiips all-in-ones &mdash; catalog product photography shot for CVALT."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_stiiizy.jpg"
+               data-lightbox-caption="Stiiizy live resin &mdash; box, jar and tool, shot for the CVALT catalog."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_mural_nug.jpg"
+               data-lightbox-caption="Flower against the mural &mdash; product photography that puts the shop in the frame."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_splash.jpg"
+               data-lightbox-caption="All-in-one on the splash &mdash; composited product graphic for a drop."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_rosin.jpg"
+               data-lightbox-caption="Rosin macro &mdash; concentrate photography for the CVALT catalog."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_shatter.jpg"
+               data-lightbox-caption="Sugar on the tool &mdash; concentrate photography for the CVALT catalog."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_dab.jpg"
+               data-lightbox-caption="Live resin, backlit &mdash; concentrate photography for the CVALT catalog."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_diamond.jpg"
+               data-lightbox-caption="Diamond macro &mdash; the tightest shot in the catalog set."></div>
           <span class="reel-tag">The app, the packaging, the campaigns</span>
         </div>
         <div class="work-body">
@@ -1688,12 +1821,24 @@
           </span>
         </div>
         <div class="work-body">
-          <span class="work-tag">Social + Event Recap</span>
+          <span class="work-tag">Brand Identity &middot; Content System</span>
           <h3 class="work-client">Kannabis Delivery</h3>
           <p class="work-desc">
-            Drop-day recap content, cut fast enough that the people who missed it still felt like they'd
-            been there.
+            <em>A brand and a feed, built in the same two weeks.</em> Stood up the identity system &mdash;
+            mark, type, colour, the rules that hold it &mdash; then shot and cut twelve reels against it in
+            under a fortnight, sequenced as a funnel rather than twelve separate posts. Drop-day recaps fast
+            enough that the people who missed it still felt like they'd been there.
           </p>
+          <div class="work-stats">
+            <div class="stat">
+              <span class="stat-num">12 reels</span>
+              <span class="stat-label">Shot, Cut &amp; Shipped in Under Two Weeks</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">1 system</span>
+              <span class="stat-label">Identity Built Alongside the Content</span>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -1751,9 +1896,13 @@
             <em>Shot on film, on purpose.</em> Premium Blossom already had a strong brand identity built around
             community — the job was capturing it right, not reinventing it. Shot their grand opening on 35mm
             film instead of digital, so it felt like family footage instead of an ad, plus recap videos that
-            kept the same feeling going. &ldquo;Thank you @JunkyardButcher for bringing this reel to life and
-            capturing the spirit of our community&rdquo; — straight off their own post.
+            kept the same feeling going.
           </p>
+          <blockquote class="work-quote">
+            &ldquo;Thank you @JunkyardButcher for bringing this reel to life and capturing the spirit
+            of our community.&rdquo;
+            <cite>&mdash; Premium Blossom, on their own post</cite>
+          </blockquote>
         </div>
       </article>
 
@@ -1819,7 +1968,8 @@
           <label for="hire-need">What you need</label>
           <select id="hire-need" name="need">
             <option value="">Pick one &mdash; or don't, we'll work it out</option>
-            <option>Brand strategy &amp; the audit</option>
+            <option>The Dig &mdash; the $1,500 audit</option>
+            <option>Brand strategy</option>
             <option>Brand identity system</option>
             <option>Content &amp; video</option>
             <option>Email &amp; SMS</option>
@@ -1834,6 +1984,7 @@
         <div class="hire-actions">
           <button type="submit" class="link-cta primary" id="hire-submit">Send It &rarr;</button>
           <span class="hire-note">Or email <a href="mailto:hello@junkyardbutcher.com?subject=Junkyard%20Butcher%20%E2%80%94%20new%20job">hello@junkyardbutcher.com</a></span>
+          <a href="#join" class="link-cta quiet">Not ready? Take the work notes &rarr;</a>
         </div>
       </form>
       <p class="join-status" id="hire-status" role="status" aria-live="polite" hidden></p>
@@ -1890,9 +2041,9 @@
       <div class="eyebrow">The Block</div>
       <h2 class="join-title">Get On The Butcher's <span class="cut">Block</span></h2>
       <p class="join-copy">
-        Not a newsletter. A running conversation with the people actually building something — case
-        studies before they're polished, the frameworks as we use them, and first look when a spot on
-        the calendar opens up.
+        Work notes from inside the shop. What's working on live accounts before it's a tidy case study,
+        the frameworks as I'm actually using them, and first word when a spot on the calendar opens up.
+        Infrequent, and you can leave in one click.
       </p>
       <form class="join-form" id="join-form" novalidate>
         <label for="email-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
@@ -1921,8 +2072,8 @@
     </div>
     <div class="foot-links">
       <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#services">Services</a>
+      <a href="#dig">The Dig</a>
+      <a href="#services">What You Get</a>
       <a href="philosophy.html">Philosophy</a>
       <a href="#hire">Hire</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
@@ -2186,6 +2337,19 @@
   // Deliberately NOT Klaviyo: that API subscribes a profile to marketing, and
   // someone asking for a quote has not consented to a newsletter.
   var HIRE_ENDPOINT = '';
+
+
+  // "Book The Dig" should land on the form with the answer already picked.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-prefill]'), function(a){
+    a.addEventListener('click', function(){
+      var want = a.getAttribute('data-prefill');
+      var sel  = document.getElementById('hire-need');
+      if (!sel) return;
+      Array.prototype.forEach.call(sel.options, function(o){
+        if (o.text.replace(/\s+/g,' ').trim() === want) sel.value = o.value || o.text;
+      });
+    });
+  });
 
   var hireForm = document.getElementById('hire-form');
   if (hireForm) {
