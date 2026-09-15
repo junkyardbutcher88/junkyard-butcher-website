@@ -640,6 +640,9 @@
   .work-frame.ar-wide{ aspect-ratio:16/9; }
   .work-frame.ar-tall{ aspect-ratio:4/5; }
   .featured .work-frame{ aspect-ratio:21/9; }
+  @media (max-width:1000px){
+    .cvalt-collage{ grid-template-columns:1fr 1fr 1fr !important; }
+  }
   @media (max-width:760px){
     .cvalt-collage{ grid-template-columns:1fr 1fr !important; }
   }
@@ -706,19 +709,19 @@
   .byline{ border-bottom:1px solid var(--line); }
   .byline-grid{
     display:grid;
-    grid-template-columns:132px 1fr;
+    grid-template-columns:186px 1fr;
     gap:clamp(20px,4vw,44px);
     align-items:center;
     padding-block:clamp(28px,4vw,44px);
   }
   @media (max-width:620px){
-    .byline-grid{ grid-template-columns:92px 1fr; gap:20px; align-items:start; }
+    .byline-grid{ grid-template-columns:120px 1fr; gap:18px; align-items:start; }
   }
   .byline-frame{
     position:relative;
     border:1px solid var(--line-strong);
     overflow:hidden;
-    aspect-ratio:1/1;
+    aspect-ratio:3/2;          /* the working shot is landscape */
     max-width:100%;
   }
   .byline-frame img{
@@ -1335,8 +1338,9 @@
   <section class="byline">
     <div class="wrap byline-grid">
       <div class="byline-frame">
-        <img src="assets/gabe_portrait.jpg" alt="Gabe, the operator behind Junkyard Butcher"
-             width="900" height="900" loading="lazy">
+        <img src="assets/gabe_camera.jpg"
+             alt="Gabe shooting at an event, camera raised, shot by someone else"
+             width="720" height="493" loading="lazy" style="object-position:62% center;">
       </div>
       <div>
         <div class="eyebrow">Who&rsquo;s Cutting</div>
@@ -1514,6 +1518,17 @@
           </div>
           <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
         </div>
+        <!-- The email & SMS system — the service behind the $4.6M line, and the one
+             the site had no picture of until now. -->
+        <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:3/2; margin-top:1px;">
+          <div class="collage-tile cover">
+            <img src="assets/cvalt_email_1.jpg" alt="CVALT campaign email: Cookies dual-chamber vape launch" width="794" height="1123" loading="lazy" style="object-position:center top;">
+          </div>
+          <div class="collage-tile cover">
+            <img src="assets/cvalt_email_2.jpg" alt="CVALT campaign email: product detail and potency breakdown" width="794" height="1123" loading="lazy" style="object-position:center top;">
+          </div>
+          <span class="reel-tag" style="left:16px; bottom:14px;">The email &amp; SMS system &mdash; 66% to 86% delivered</span>
+        </div>
         <div class="work-body">
           <span class="work-tag">Brand Strategy &middot; Email &amp; SMS Systems &middot; Content <em class="mark-selected">Selected</em></span>
           <h3 class="work-client">CVALT</h3>
@@ -1569,7 +1584,13 @@
           <div class="collage-tile cover">
             <img src="assets/bosky_jar.jpg" alt="Bosky Genetics jar, product photography" width="700" height="934" loading="lazy">
           </div>
-          <span class="reel-tag" style="left:16px; bottom:14px;">Grow room + product photography</span>
+          <div class="collage-tile cover">
+            <img src="assets/bosky_macro.jpg" alt="Bosky Genetics macro: trichome detail on a finished flower" width="1400" height="933" loading="lazy">
+          </div>
+          <div class="collage-tile cover">
+            <img src="assets/bosky_harvest.jpg" alt="Bosky Genetics first licensed harvest, full canopy under lights" width="1400" height="788" loading="lazy">
+          </div>
+          <span class="reel-tag" style="left:16px; bottom:14px;">First harvest, grow room, macro and product</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Video &middot; Photography &middot; Brand Documentation</span>
@@ -1589,10 +1610,18 @@
            crowd shot; third: candid customer-at-the-counter interaction. See
            junkyard-butcher-portfolio-case-studies.md for the full shot list. -->
       <article class="work-card span-3">
-        <!-- Drive link removed. Becomes a <jb-video> tile once the reel is encoded to R2. -->
-        <div class="work-frame ar-wide has-image is-pending">
-          <img src="assets/premium_blossom.jpg" alt="Premium Blossom recap reel, cover frame" width="507" height="900" loading="lazy">
-          <span class="reel-tag">Full reel &mdash; landing here shortly</span>
+        <!-- The three shots the old TODO asked for. Reel still to be encoded to R2. -->
+        <div class="work-frame ar-wide has-image" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line);">
+          <div class="collage-tile cover">
+            <img src="assets/pb_ribbon.jpg" alt="Premium Blossom grand opening, ribbon cutting with staff and crowd" width="1400" height="928" loading="lazy">
+          </div>
+          <div class="collage-tile cover">
+            <img src="assets/pb_customer.jpg" alt="Premium Blossom customers at the counter on opening day" width="1400" height="928" loading="lazy">
+          </div>
+          <div class="collage-tile cover">
+            <img src="assets/pb_mural.jpg" alt="Premium Blossom interior mural" width="1400" height="928" loading="lazy">
+          </div>
+          <span class="reel-tag" style="left:16px; bottom:14px;">Grand opening &mdash; shot on 35mm</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Video &middot; 35mm Film &middot; Recap Content</span>
