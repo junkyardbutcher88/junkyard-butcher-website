@@ -971,6 +971,43 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
   }
 
+
+  /* ============ MONO UNTIL ENGAGED ============
+     Everything on the page rests desaturated. Colour is the reward for
+     opening something — the lightbox and a playing reel are the only
+     places it appears. Keeps a wall of tiles calm and makes the work
+     read as one system rather than a colour grid. */
+  .work-frame img,
+  .collage-tile img,
+  .founder-frame img,
+  .byline-frame img{
+    filter:grayscale(1) contrast(1.06);
+    transition:filter .5s ease;
+  }
+  /* engaged = full colour */
+  .lightbox-media img,
+  .lightbox-media video{ filter:none !important; }
+
+  /* any tile that opens something is obviously clickable */
+  .collage-tile[role="button"],
+  .work-frame[role="button"],
+  .founder-frame[role="button"]{ cursor:zoom-in; }
+  .collage-tile[role="button"]:hover,
+  .work-frame[role="button"]:hover,
+  .founder-frame[role="button"]:hover{ outline:1px solid var(--acid); outline-offset:-1px; }
+  .collage-tile[role="button"]:focus-visible,
+  .work-frame[role="button"]:focus-visible,
+  .founder-frame[role="button"]:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
+  /* video tiles keep the play cursor, not the zoom one */
+  [data-lightbox-video],
+  [data-lightbox-external]{ cursor:pointer !important; }
+
+  /* enlarged stills: contain, not crop — we want the whole frame */
+  .lightbox-media img.lightbox-full{
+    width:auto; max-width:100%; max-height:82vh;
+    object-fit:contain; margin:0 auto;
+  }
+
   /* ============ LIGHTBOX ============ */
   .lightbox{
     position:fixed; inset:0; z-index:1200;
@@ -1713,7 +1750,28 @@
 
   // Video / reel lightbox — real self-hosted clips play inline; Instagram-only
   // reels get a branded preview panel instead of an abrupt tab switch.
-  var triggers = document.querySelectorAll('[data-lightbox-video], [data-lightbox-external]');
+  // Every still that isn't already a video/external trigger becomes an
+  // image trigger, so a photo enlarges in colour on click. Done in JS so
+  // new tiles are covered automatically instead of hand-tagged.
+  Array.prototype.forEach.call(
+    document.querySelectorAll('.collage-tile, .work-frame.has-image, .founder-frame'),
+    function(el){
+      if (el.hasAttribute('data-lightbox-video') ||
+          el.hasAttribute('data-lightbox-external') ||
+          el.hasAttribute('data-lightbox-image')) return;
+      var img = el.querySelector(':scope > img');
+      if (!img) return;                       // grid wrappers have no direct img
+      el.setAttribute('data-lightbox-image', img.getAttribute('src'));
+      if (!el.getAttribute('data-lightbox-caption')) {
+        el.setAttribute('data-lightbox-caption', img.getAttribute('alt') || '');
+      }
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-label', 'Enlarge: ' + (img.getAttribute('alt') || 'image'));
+    }
+  );
+
+  var triggers = document.querySelectorAll('[data-lightbox-video], [data-lightbox-external], [data-lightbox-image]');
   if (triggers.length) {
     var overlay = document.createElement('div');
     overlay.className = 'lightbox';
@@ -1735,6 +1793,7 @@
       var poster = el.getAttribute('data-lightbox-poster') || '';
       var video = el.getAttribute('data-lightbox-video');
       var ext = el.getAttribute('data-lightbox-external');
+      var still = el.getAttribute('data-lightbox-image');
       if (video) {
         media.innerHTML = '<video src="' + video + '" poster="' + poster + '" controls autoplay muted playsinline loop></video>';
       } else if (ext) {
@@ -1743,6 +1802,8 @@
         media.innerHTML =
           '<img src="' + poster + '" alt="">' +
           '<a class="link-cta primary lightbox-ig-cta" href="' + ext + '" target="_blank" rel="noopener">' + ctaLabel + '</a>';
+      } else if (still) {
+        media.innerHTML = '<img class="lightbox-full" src="' + still + '" alt="' + cap.replace(/"/g, '&quot;') + '">';
       }
       caption.textContent = cap;
       lastFocused = document.activeElement;
