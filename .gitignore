@@ -7,3 +7,6 @@ tools/masters/
 # os cruft
 Thumbs.db
 .DS_Store
+
+# preview renders Claude drops here - not part of the site
+Claude outputs/
