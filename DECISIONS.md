@@ -73,10 +73,19 @@ Stills are wired as lightbox triggers **in JS, not in markup** — any `.collage
 text. Grid wrappers are skipped automatically because their images are nested, not direct
 children. New tiles are covered without being hand-tagged.
 
-Known tension: at rest the whole page is greyscale, so someone who only scrolls never
-sees the colour work. Accepted deliberately — the alternative (colour on hover) softens
-exactly the effect we want, and doesn't exist on mobile anyway. Revisit if the work
-section starts reading as drab rather than deliberate.
+**Stills colour on hover; reels don't.** Revised 15 Sep 2026, superseding the first pass
+which held everything mono until clicked. The split follows what the thing *is*: a photo
+is something you open, so a cursor pass is enough to earn colour and it signals the tile
+is clickable. A reel is something you commit to — hovering a video tells you nothing, so
+colour is held back until it actually plays. Implemented as `.is-still:hover img` inside
+`@media (hover:hover)`, with `:focus-visible` parity for keyboard. Video tiles carry no
+hover rule at all.
+
+The earlier worry — that an all-grey page hides the colour work from anyone who only
+scrolls — is what this resolves on desktop. On touch there's no hover, so stills stay mono
+until tapped open; that's acceptable because a tap is cheap and the lightbox pays out in
+full colour. The `.is-still` class is applied by the same JS that wires the lightbox, so
+the hover behaviour can never drift out of sync with what's clickable.
 
 **Class prefix is `jb-` but the play button is `.jb-cut`.** `.jb-mark` was already taken
 by the site's own nav/footer monogram — using it in the player absolutely-positioned
