@@ -1,0 +1,9 @@
+# encoded video output — never goes in git, it lives on R2
+tools/dist/
+
+# local masters, if you park any here
+tools/masters/
+
+# os cruft
+Thumbs.db
+.DS_Store

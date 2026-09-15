@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nothing On This Hook — Junkyard Butcher</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230c0c0a'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial Black, Arial, sans-serif' font-weight='900' font-size='56' letter-spacing='-3' fill='%23ece6d8'%3EJB%3C/text%3E%3Cline x1='27' y1='85' x2='73' y2='15' stroke='%23ff5b23' stroke-width='6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0a; --bone:#ece6d8; --bone-dim:#cfc8b6; --smoke:#8a8371;
+    --acid:#c9ff3f; --rust:#ff5b23; --line:rgba(236,230,216,0.16);
+    --font-display:"Anton","Arial Narrow",sans-serif;
+    --font-body:"Space Grotesk",ui-sans-serif,system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0; min-height:100vh; background:var(--ink); color:var(--bone);
+    font-family:var(--font-body); line-height:1.6;
+    display:flex; align-items:center; -webkit-font-smoothing:antialiased;
+  }
+  #grit{
+    position:fixed; inset:0; z-index:9; pointer-events:none;
+    opacity:0.40; mix-blend-mode:overlay; background-size:180px 180px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+  .wrap{ max-width:720px; margin:0 auto; padding:clamp(40px,8vw,80px) clamp(20px,5vw,56px); position:relative; z-index:10; }
+  .code{
+    font-family:var(--font-mono); font-size:.7rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--rust); margin-bottom:16px;
+  }
+  h1{
+    font-family:var(--font-display); font-weight:400;
+    font-size:clamp(2.6rem,11vw,6rem); line-height:.9;
+    text-transform:uppercase; margin:0; text-wrap:balance;
+  }
+  h1 .sl{ color:var(--rust); }
+  p{ color:var(--bone-dim); max-width:48ch; margin:22px 0 0; }
+  .links{ display:flex; flex-wrap:wrap; gap:14px 26px; margin-top:34px; }
+  a{
+    font-family:var(--font-mono); font-size:.76rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--acid); text-decoration:none;
+    border-bottom:1px solid rgba(201,255,63,.4); padding-bottom:3px;
+  }
+  a:hover, a:focus-visible{ border-bottom-color:var(--acid); }
+  a:focus-visible{ outline:2px solid var(--acid); outline-offset:4px; }
+  .stamp{ width:92px; height:92px; margin-bottom:26px; display:block; }
+  .stamp text{ fill:var(--bone); font-family:var(--font-display); }
+</style>
+</head>
+<body>
+<div id="grit" aria-hidden="true"></div>
+<div class="wrap">
+  <svg class="stamp" viewBox="0 0 100 100" aria-hidden="true">
+    <text x="50" y="72" text-anchor="middle" font-size="62" letter-spacing="-3">JB</text>
+    <line x1="26" y1="88" x2="74" y2="10" stroke="#ff5b23" stroke-width="7"/>
+  </svg>
+  <div class="code">Error 404</div>
+  <h1>Nothing <span class="sl">/</span> On This Hook</h1>
+  <p>
+    Whatever was here got cut. Could be a bad link, could be a page that never existed.
+    Either way there's nothing hanging on it.
+  </p>
+  <div class="links">
+    <a href="/">Back to the front &rarr;</a>
+    <a href="/#work">See the work &rarr;</a>
+    <a href="mailto:hello@junkyardbutcher.com">Start a conversation &rarr;</a>
+  </div>
+</div>
+</body>
+</html>

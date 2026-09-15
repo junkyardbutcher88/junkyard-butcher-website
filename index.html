@@ -640,6 +640,9 @@
   .work-frame.ar-wide{ aspect-ratio:16/9; }
   .work-frame.ar-tall{ aspect-ratio:4/5; }
   .featured .work-frame{ aspect-ratio:21/9; }
+  @media (max-width:760px){
+    .cvalt-collage{ grid-template-columns:1fr 1fr !important; }
+  }
   .work-frame::before{
     content:"";
     position:absolute; inset:0;
@@ -839,6 +842,135 @@
     color:var(--smoke);
   }
 
+
+  /* ============ JB-VIDEO ============ */
+  .jb{
+    position:relative; display:block; width:100%;
+    background:#000; border:1px solid var(--line-strong);
+    overflow:hidden; aspect-ratio:16/9; isolation:isolate;
+    --pad:12px;
+  }
+  .jb video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; display:block; background:#000;
+    filter:grayscale(1) contrast(1.05);
+    transition:filter .9s ease .22s;
+  }
+  .jb.is-cut video{ filter:none; }
+
+  .jb-poster{ position:absolute; inset:0; z-index:3; pointer-events:none; }
+  .jb-half{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    filter:grayscale(1) contrast(1.06);
+    transition:transform .55s cubic-bezier(.2,.75,.25,1), opacity .55s ease;
+    will-change:transform,opacity;
+  }
+  .jb-half.a{ clip-path:polygon(0 0, 100% 0, 0 100%); }
+  .jb-half.b{ clip-path:polygon(100% 0, 100% 100%, 0 100%); }
+  .jb.is-cut .jb-half.a{ transform:translate(-14%,-14%); opacity:0; }
+  .jb.is-cut .jb-half.b{ transform:translate(14%,14%);  opacity:0; }
+
+  .jb-slash{ position:absolute; inset:0; z-index:4; pointer-events:none; }
+  .jb-slash line{
+    stroke:var(--rust); stroke-width:3; vector-effect:non-scaling-stroke;
+    stroke-dasharray:1; stroke-dashoffset:1; opacity:0;
+  }
+  .jb.is-cut .jb-slash line{ animation:jbslash .42s cubic-bezier(.65,0,.35,1) forwards; }
+  @keyframes jbslash{
+    0%{ stroke-dashoffset:1; opacity:1; }
+    55%{ stroke-dashoffset:0; opacity:1; }
+    100%{ stroke-dashoffset:0; opacity:0; }
+  }
+
+  .jb-cut{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:5; width:76px; height:76px; border:0; padding:0; cursor:pointer;
+    background:rgba(12,12,10,.55); display:grid; place-items:center;
+    transition:opacity .3s ease, background .2s ease;
+  }
+  .jb-cut svg{ width:46px; height:46px; display:block; }
+  .jb-cut .jbt{ fill:var(--bone); font-family:var(--font-display); }
+  .jb-cut:hover{ background:rgba(12,12,10,.8); }
+  .jb-cut:hover .jbt{ fill:var(--acid); }
+  .jb-cut:focus-visible{ outline:2px solid var(--acid); outline-offset:3px; }
+  .jb.is-cut .jb-cut{ opacity:0; pointer-events:none; }
+
+  .jb-slate{
+    position:absolute; top:var(--pad); left:var(--pad); z-index:6;
+    font-family:var(--font-mono); font-size:0.62rem; line-height:1.6;
+    letter-spacing:0.12em; text-transform:uppercase;
+    padding:7px 10px; background:rgba(12,12,10,.66);
+    border-left:2px solid var(--rust); color:var(--bone-dim);
+    pointer-events:none; transition:opacity .4s ease .2s; max-width:70%;
+  }
+  .jb-slate b{ display:block; color:var(--bone); font-weight:500; letter-spacing:0.1em; }
+  .jb.is-cut .jb-slate{ opacity:0; }
+  .jb.is-cut.is-paused .jb-slate{ opacity:1; transition-delay:0s; }
+
+  .jb-wait{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:6; width:58px; height:58px; opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .jb.is-waiting .jb-wait{ opacity:1; }
+  .jb-wait svg{ width:100%; height:100%; animation:jbspin 3.4s linear infinite; }
+  @keyframes jbspin{ to{ transform:rotate(360deg); } }
+
+  .jb-ui{
+    position:absolute; left:0; right:0; bottom:0; z-index:7;
+    padding:26px var(--pad) var(--pad);
+    background:linear-gradient(to top, rgba(12,12,10,.92) 30%, rgba(12,12,10,0));
+    opacity:0; transform:translateY(6px);
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .jb.is-cut .jb-ui{ opacity:1; transform:none; }
+  .jb.is-cut.is-idle:not(.is-paused) .jb-ui{ opacity:0; transform:translateY(6px); }
+
+  .jb-track{ position:relative; height:16px; cursor:pointer; display:flex; align-items:center; touch-action:none; }
+  .jb-rail{ position:absolute; left:0; right:0; height:3px; background:var(--iron-2); }
+  .jb-buf{ position:absolute; left:0; height:3px; width:0; background:var(--smoke); opacity:.7; }
+  .jb-prog{ position:absolute; left:0; height:3px; width:0; background:var(--acid); }
+  .jb-knob{ position:absolute; left:0; width:3px; height:13px; background:var(--acid); transform:translateX(-1px); }
+  .jb-tick{ position:absolute; width:2px; height:9px; background:var(--bone); opacity:.55; transform:translateX(-1px); }
+  .jb-track:focus-visible{ outline:2px solid var(--acid); outline-offset:3px; }
+
+  .jb-row{ display:flex; align-items:center; gap:14px; margin-top:9px; }
+  .jb-btn{
+    width:26px; height:26px; flex:0 0 auto; padding:0; cursor:pointer;
+    background:transparent; border:1px solid var(--line-strong); color:var(--bone);
+    display:grid; place-items:center; transition:border-color .15s, color .15s;
+  }
+  .jb-btn svg{ width:14px; height:14px; display:block; fill:currentColor; }
+  .jb-btn:hover{ border-color:var(--acid); color:var(--acid); }
+  .jb-btn:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; }
+  .jb-time{
+    font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em;
+    color:var(--bone-dim); font-variant-numeric:tabular-nums; margin-right:auto;
+  }
+  .jb-time i{ font-style:normal; color:var(--smoke); }
+  .jb-also{
+    margin:10px 0 0; font-family:var(--font-mono); font-size:0.68rem;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--smoke);
+  }
+  .jb-also a{ color:var(--smoke); border-bottom:1px solid rgba(138,131,113,.5); }
+  .jb-also a:hover{ color:var(--acid); border-bottom-color:var(--acid); }
+
+  @media (prefers-reduced-motion: reduce){
+    .jb-slash line{ opacity:0 !important; animation:none !important; }
+    .jb.is-cut .jb-half.a, .jb.is-cut .jb-half.b{ transform:none; opacity:0; }
+    .jb video{ transition:none; }
+    .jb-wait svg{ animation:none; }
+  }
+
+  /* ============ FILM GRAIN ============ */
+  #grit{
+    position:fixed; inset:0; z-index:200; pointer-events:none;
+    opacity:0.40; mix-blend-mode:overlay;
+    background-size:180px 180px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
+  }
+
   /* ============ LIGHTBOX ============ */
   .lightbox{
     position:fixed; inset:0; z-index:1200;
@@ -1033,6 +1165,7 @@
 </style>
 </head>
 <body>
+<div id="grit" aria-hidden="true"></div>
 
 <div class="grain" aria-hidden="true"></div>
 <div class="progress-bar" aria-hidden="true"></div>
@@ -1283,7 +1416,16 @@
     <div class="work-grid">
 
       <article class="work-card featured">
-        <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line);">
+        <div class="jb" id="jb-cvalt"
+             style="aspect-ratio:1440/810; margin-bottom:1px;"
+             data-src="https://media.junkyardbutcher.com/reels/cvalt/v3/master.m3u8"
+             data-fallback="https://media.junkyardbutcher.com/reels/cvalt/v3/fallback.mp4"
+             data-poster="https://media.junkyardbutcher.com/reels/cvalt/v3/poster.jpg"
+             data-client="CVALT"
+             data-tags="Brand film &middot; Fresno &middot; 81 sec"
+             data-label="Play the CVALT brand film">
+        </div>
+        <div class="work-frame has-image cvalt-collage" style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1px; background:var(--line);">
           <div class="collage-tile lightbox-trigger" role="button" tabindex="0"
                data-lightbox-video="assets/cvalt_reel.mp4" data-lightbox-poster="assets/cvalt_reel_poster.jpg"
                data-lightbox-caption="CVALT — brand video, cut for the app launch." aria-label="Play the CVALT brand video">
@@ -1297,6 +1439,9 @@
           </div>
           <div class="collage-tile">
             <img src="assets/cvalt_sticker.jpg" alt="Cannabis, Delivered sticker design produced for CVALT" width="562" height="1000" loading="lazy">
+          </div>
+          <div class="collage-tile cover">
+            <img src="assets/cvalt_alterlean.jpg" alt="Alter-Lean cannabis tincture, product packaging shot for CVALT" width="700" height="700" loading="lazy" style="object-position:70% center;">
           </div>
           <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
         </div>
@@ -1350,7 +1495,7 @@
       <article class="work-card span-3">
         <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:4/3;">
           <div class="collage-tile cover">
-            <img src="assets/bosky_genetics.jpg" alt="Bosky Genetics grow room, on-the-ground capture" width="800" height="450" loading="lazy">
+            <img src="assets/bosky_genetics.jpg" alt="Bosky Genetics grow room, first harvest, worker inspecting the canopy" width="1000" height="562" loading="lazy" style="object-position:25% 38%;">
           </div>
           <div class="collage-tile cover">
             <img src="assets/bosky_jar.jpg" alt="Bosky Genetics jar, product photography" width="700" height="934" loading="lazy">
@@ -1731,6 +1876,241 @@
       });
     });
   }
+})();
+</script>
+
+
+<script>
+/* ============ <jb-video> ============================================
+   Progressive: Safari plays HLS natively, everything else loads hls.js
+   from cdnjs, and if that fails we drop to the progressive MP4. A broken
+   CDN can never leave a black frame.
+   Add a reel by dropping in <div class="jb" data-src data-fallback
+   data-poster data-client data-tags> — no other wiring needed.
+=================================================================== */
+(function(){
+  var HLS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.6.15/hls.min.js';
+  var hlsPromise = null;
+
+  function loadHls(){
+    if (hlsPromise) return hlsPromise;
+    hlsPromise = new Promise(function(resolve){
+      if (window.Hls) return resolve(window.Hls);
+      var s = document.createElement('script');
+      s.src = HLS_CDN;
+      s.onload  = function(){ resolve(window.Hls || null); };
+      s.onerror = function(){ resolve(null); };
+      document.head.appendChild(s);
+    });
+    return hlsPromise;
+  }
+
+  var ICON_PLAY  = 'M8 5v14l11-7z';
+  var ICON_PAUSE = 'M6 5h4v14H6zM14 5h4v14h-4z';
+  var ICON_SPK   = 'M4 9v6h4l5 4V5L8 9H4z';
+  var ICON_MUTE  = 'M4 9v6h4l5 4V5L8 9H4zm14.5-1.5l-1.4 1.4L19.2 11l-2.1 2.1 1.4 1.4L20.6 12.4 22.7 14.5l1.4-1.4L22 11l2.1-2.1-1.4-1.4-2.1 2.1z';
+
+  function fmt(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s/60), r = Math.floor(s%60);
+    return (m<10?'0':'')+m+':'+(r<10?'0':'')+r;
+  }
+
+  function build(box){
+    var src      = box.getAttribute('data-src') || '';
+    var fallback = box.getAttribute('data-fallback') || '';
+    var poster   = box.getAttribute('data-poster') || '';
+    var client   = box.getAttribute('data-client') || '';
+    var tags     = box.getAttribute('data-tags') || '';
+    var label    = box.getAttribute('data-label') || ('Play the ' + client + ' reel');
+    var also     = box.getAttribute('data-also') || '';
+    var marks    = (box.getAttribute('data-marks') || '').split(',')
+                     .map(function(x){ return parseFloat(x); })
+                     .filter(function(x){ return isFinite(x); });
+
+    box.classList.add('is-paused','is-idle');
+    box.innerHTML =
+      '<video playsinline preload="none"' + (poster ? ' poster="'+poster+'"' : '') + '></video>' +
+      (poster ?
+        '<div class="jb-poster">' +
+          '<div class="jb-half a" style="background-image:url('+poster+')"></div>' +
+          '<div class="jb-half b" style="background-image:url('+poster+')"></div>' +
+        '</div>' : '') +
+      '<svg class="jb-slash" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">' +
+        '<line x1="0" y1="100" x2="100" y2="0" pathLength="1"></line></svg>' +
+      (client ?
+        '<div class="jb-slate"><b>'+client+'</b>'+tags+'</div>' : '') +
+      '<div class="jb-wait" aria-hidden="true">' +
+        '<svg viewBox="0 0 100 100">' +
+          '<circle cx="50" cy="50" r="46" fill="none" stroke="rgba(236,230,216,.32)" stroke-width="1"/>' +
+          '<circle cx="50" cy="50" r="30" fill="none" stroke="#ff5b23" stroke-width="1"/>' +
+          '<path d="M38 56 L50 44 L62 56 M50 44 V74" stroke="#c9ff3f" stroke-width="3" fill="none" stroke-linecap="square"/>' +
+        '</svg></div>' +
+      '<button class="jb-cut" type="button" aria-label="'+label+'">' +
+        '<svg viewBox="0 0 100 100" aria-hidden="true">' +
+          '<text class="jbt" x="50" y="70" text-anchor="middle" font-size="62" letter-spacing="-3">JB</text>' +
+          '<line x1="26" y1="88" x2="74" y2="10" stroke="#ff5b23" stroke-width="7"/>' +
+        '</svg></button>' +
+      '<div class="jb-ui">' +
+        '<div class="jb-track" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">' +
+          '<div class="jb-rail"></div><div class="jb-buf"></div>' +
+          '<div class="jb-prog"></div><div class="jb-knob"></div>' +
+        '</div>' +
+        '<div class="jb-row">' +
+          '<button class="jb-btn jb-pp" type="button" aria-label="Pause"><svg viewBox="0 0 24 24"><path d="'+ICON_PAUSE+'"/></svg></button>' +
+          '<span class="jb-time">00:00 <i>/ 00:00</i></span>' +
+          '<button class="jb-btn jb-mute" type="button" aria-label="Mute"><svg viewBox="0 0 24 24"><path d="'+ICON_SPK+'"/></svg></button>' +
+          '<button class="jb-btn jb-pip" type="button" aria-label="Picture in picture"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3V4zm10 8h6v5h-6v-5z"/></svg></button>' +
+          '<button class="jb-btn jb-fs" type="button" aria-label="Fullscreen"><svg viewBox="0 0 24 24"><path d="M3 3h7v2H5v5H3V3zm11 0h7v7h-2V5h-5V3zM3 14h2v5h5v2H3v-7zm16 0h2v7h-7v-2h5v-5z"/></svg></button>' +
+        '</div>' +
+      '</div>';
+
+    var v     = box.querySelector('video');
+    var big   = box.querySelector('.jb-cut');
+    var track = box.querySelector('.jb-track');
+    var prog  = box.querySelector('.jb-prog');
+    var buf   = box.querySelector('.jb-buf');
+    var knob  = box.querySelector('.jb-knob');
+    var tEl   = box.querySelector('.jb-time');
+    var pp    = box.querySelector('.jb-pp');
+    var ppSvg = pp.querySelector('svg');
+    var mute  = box.querySelector('.jb-mute');
+    var mSvg  = mute.querySelector('svg');
+    var pip   = box.querySelector('.jb-pip');
+    var fs    = box.querySelector('.jb-fs');
+
+    var attached = false;
+
+    function useFallback(){
+      if (!fallback) return;
+      v.src = fallback;
+    }
+
+    function attach(){
+      if (attached) return Promise.resolve();
+      attached = true;
+      if (!src) { useFallback(); return Promise.resolve(); }
+      // Safari / iOS: native HLS, no library needed
+      if (v.canPlayType('application/vnd.apple.mpegurl')) { v.src = src; return Promise.resolve(); }
+      return loadHls().then(function(Hls){
+        if (Hls && Hls.isSupported()) {
+          var h = new Hls({ enableWorker:true });
+          h.on(Hls.Events.ERROR, function(_e, data){ if (data && data.fatal) useFallback(); });
+          h.loadSource(src);
+          h.attachMedia(v);
+        } else {
+          useFallback();
+        }
+      });
+    }
+
+    function paintMarks(){
+      if (!isFinite(v.duration) || !v.duration) return;
+      Array.prototype.forEach.call(track.querySelectorAll('.jb-tick'), function(n){ n.remove(); });
+      marks.forEach(function(m){
+        if (m >= v.duration) return;
+        var d = document.createElement('div');
+        d.className = 'jb-tick';
+        d.style.left = (m / v.duration * 100) + '%';
+        track.appendChild(d);
+      });
+    }
+
+    function paint(){
+      var d = v.duration, c = v.currentTime;
+      var pct = (isFinite(d) && d) ? (c/d*100) : 0;
+      prog.style.width = pct + '%';
+      knob.style.left  = pct + '%';
+      tEl.innerHTML = fmt(c) + ' <i>/ ' + fmt(d) + '</i>';
+      track.setAttribute('aria-valuenow', Math.round(pct));
+      try {
+        if (v.buffered.length && d) buf.style.width = (v.buffered.end(v.buffered.length-1)/d*100) + '%';
+      } catch(e){}
+    }
+
+    var idleT;
+    function stir(){
+      box.classList.remove('is-idle');
+      clearTimeout(idleT);
+      idleT = setTimeout(function(){ box.classList.add('is-idle'); }, 2500);
+    }
+    ['mousemove','touchstart','focusin'].forEach(function(ev){
+      box.addEventListener(ev, stir, {passive:true});
+    });
+
+    function start(){
+      if (box.classList.contains('is-cut')) return;
+      box.classList.add('is-cut','is-waiting');
+      Promise.resolve(attach()).then(function(){
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+      });
+      stir();
+    }
+    function toggle(){
+      if (!box.classList.contains('is-cut')) { start(); return; }
+      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else v.pause();
+    }
+
+    big.addEventListener('click', start);
+    pp.addEventListener('click', toggle);
+    v.addEventListener('click', function(){ if (box.classList.contains('is-cut')) toggle(); });
+
+    v.addEventListener('play',    function(){ box.classList.remove('is-paused'); ppSvg.innerHTML = '<path d="'+ICON_PAUSE+'"/>'; pp.setAttribute('aria-label','Pause'); stir(); });
+    v.addEventListener('pause',   function(){ box.classList.add('is-paused'); ppSvg.innerHTML = '<path d="'+ICON_PLAY+'"/>'; pp.setAttribute('aria-label','Play'); });
+    v.addEventListener('waiting', function(){ box.classList.add('is-waiting'); });
+    v.addEventListener('playing', function(){ box.classList.remove('is-waiting'); });
+    v.addEventListener('timeupdate', paint);
+    v.addEventListener('progress', paint);
+    v.addEventListener('loadedmetadata', function(){ box.classList.remove('is-waiting'); paint(); paintMarks(); });
+    v.addEventListener('error', function(){ if (v.src !== fallback) useFallback(); });
+    v.addEventListener('ended', function(){
+      box.classList.remove('is-cut');
+      box.classList.add('is-paused');
+      v.currentTime = 0; paint();
+    });
+
+    mute.addEventListener('click', function(){
+      v.muted = !v.muted;
+      mSvg.innerHTML = '<path d="' + (v.muted ? ICON_MUTE : ICON_SPK) + '"/>';
+      mute.setAttribute('aria-label', v.muted ? 'Unmute' : 'Mute');
+    });
+    pip.addEventListener('click', function(){
+      if (document.pictureInPictureElement) document.exitPictureInPicture();
+      else if (v.requestPictureInPicture) v.requestPictureInPicture().catch(function(){});
+    });
+    fs.addEventListener('click', function(){
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (box.requestFullscreen) box.requestFullscreen().catch(function(){});
+      else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
+    });
+
+    function seekTo(clientX){
+      var r = track.getBoundingClientRect();
+      var p = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+      if (isFinite(v.duration)) { v.currentTime = p * v.duration; paint(); }
+    }
+    var dragging = false;
+    track.addEventListener('pointerdown', function(e){ dragging = true; try{track.setPointerCapture(e.pointerId);}catch(err){} seekTo(e.clientX); });
+    track.addEventListener('pointermove', function(e){ if (dragging) seekTo(e.clientX); });
+    track.addEventListener('pointerup',   function(e){ dragging = false; try{track.releasePointerCapture(e.pointerId);}catch(err){} });
+
+    box.addEventListener('keydown', function(e){
+      var k = e.key.toLowerCase();
+      if (e.key === ' ' || k === 'k') { e.preventDefault(); toggle(); }
+      else if (e.key === 'ArrowLeft')  { e.preventDefault(); v.currentTime = Math.max(0, v.currentTime - 5); paint(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); v.currentTime = Math.min(v.duration || 0, v.currentTime + 5); paint(); }
+      else if (k === 'm') { mute.click(); }
+      else if (k === 'f') { fs.click(); }
+      stir();
+    });
+
+    paint();
+  }
+
+  var boxes = document.querySelectorAll('.jb');
+  Array.prototype.forEach.call(boxes, build);
 })();
 </script>
 

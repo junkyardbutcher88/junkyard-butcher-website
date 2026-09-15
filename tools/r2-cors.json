@@ -1,0 +1,17 @@
+[
+  {
+    "AllowedOrigins": [
+      "https://junkyardbutcher.com",
+      "https://www.junkyardbutcher.com"
+    ],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedHeaders": ["range", "content-type"],
+    "ExposeHeaders": [
+      "content-length",
+      "content-range",
+      "accept-ranges",
+      "content-type"
+    ],
+    "MaxAgeSeconds": 3600
+  }
+]
