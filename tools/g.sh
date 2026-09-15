@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
+# Dump HEAD's index.html so Claude can merge against the working copy.
 cd "$(dirname "$0")/.."
-echo "======== GIT STATUS ========"
-git status --short
+git show HEAD:index.html > tools/HEAD_index.html
+echo "wrote tools/HEAD_index.html ($(wc -c < tools/HEAD_index.html) bytes)"
+echo "working copy: $(wc -c < index.html) bytes"
 echo
-echo "======== DIFF vs HEAD ========"
-git diff --stat
-echo
-echo "======== is cvalt_alterlean in HEAD? ========"
-git show HEAD:index.html | grep -c "cvalt_alterlean" || echo 0
-echo "======== is it in the working file? ========"
-grep -c "cvalt_alterlean" index.html || echo 0
-echo
-echo "======== assets on disk ========"
-ls assets/
-echo
-echo "======== last 3 commits ========"
-git log --oneline -3
+echo "=== what the working copy ADDED vs HEAD (its unique lines) ==="
+git diff --unified=0 HEAD -- index.html | grep '^+' | grep -v '^+++' | head -40

@@ -145,6 +145,17 @@ strength we already have — don't trade it for a click.
 
 ---
 
+## Tooling gotchas
+
+**Writing the same file path to the device twice sends stale bytes.** Hit 15 Sep 2026.
+`device_commit_files` reported success, updated the file's mtime, and wrote the *previous*
+contents of that path — `tools/p.sh` shipped a commit carrying the last commit's message.
+Writing to a *new* filename landed correctly. So: when a helper script changes, give it a
+new name (`fix1.sh`, `fix2.sh`) rather than overwriting, and check the byte count in
+`device_list_dir` against the local file before trusting a rewrite.
+
+---
+
 ## Open
 
 - Cannabis-only, or local culture brands including cannabis? There's a finished
