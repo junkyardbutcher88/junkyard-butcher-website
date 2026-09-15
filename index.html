@@ -637,15 +637,8 @@
     border-bottom:1px solid var(--line);
     overflow:hidden;
   }
-  .work-frame.ar-wide{ aspect-ratio:16/9; }
   .work-frame.ar-tall{ aspect-ratio:4/5; }
   .featured .work-frame{ aspect-ratio:21/9; }
-  @media (max-width:1000px){
-    .cvalt-collage{ grid-template-columns:1fr 1fr 1fr !important; }
-  }
-  @media (max-width:760px){
-    .cvalt-collage{ grid-template-columns:1fr 1fr !important; }
-  }
   .work-frame::before{
     content:"";
     position:absolute; inset:0;
@@ -700,10 +693,59 @@
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--smoke);
+    text-shadow:0 1px 3px rgba(12,12,10,.9);  /* bright frames ate this */
   }
-  .work-frame.is-pending{ cursor:default; }
-  .work-frame.is-pending .reel-tag{ color:var(--smoke); }
-  .work-frame.is-pending img{ opacity:0.82; }
+
+  /* ============ GALLERY: one or two previews, the rest in the album ============
+     A card shows its strongest one or two frames, at the aspect ratio the
+     source photos actually are — landscape sets get landscape tiles, so
+     nothing gets cropped into a shape it was never shot in. The rest of the
+     brand set stays in the DOM as lightbox triggers but is never rendered;
+     clicking any preview opens the whole set. Short grid, complete album. */
+  .work-frame.gallery{
+    position:relative;
+    display:grid;
+    gap:1px;
+    background:var(--line);
+    grid-template-columns:1fr 1fr;
+    aspect-ratio:auto;               /* beats .featured .work-frame's 21/9 */
+  }
+  /* The TILE carries the shape, not the frame — so a card can go single
+     column on a phone without the whole strip collapsing to a slit. */
+  .gallery .collage-tile{ height:auto; width:auto; }
+  .gallery.g-sq   .collage-tile{ aspect-ratio:1/1; }   /* mixed orientation */
+  .gallery.g-wide .collage-tile{ aspect-ratio:3/2; }   /* landscape sets    */
+  .gallery.g-tall .collage-tile{ aspect-ratio:3/4; }   /* portrait sets     */
+  /* A full-bleed featured card is 1190px wide; two portrait tiles that wide
+     are 800px tall on their own. Matte them instead of cropping them. */
+  .gallery.inset{ width:100%; max-width:640px; margin-inline:auto; }
+  /* A 9:16 phone reel in a 21:9 frame shows a tenth of the shot. Matte it
+     and let the poster be the shape it was filmed in. */
+  .work-frame.reel-tall{
+    width:100%; max-width:340px; margin-inline:auto;
+    aspect-ratio:9/16;
+  }
+  @media (max-width:620px){
+    .work-frame.reel-tall{ max-width:100%; aspect-ratio:3/4; }
+  }
+  /* album-only members: in the set, never on the grid */
+  .tile-rest{ display:none !important; }
+  .gallery-more{
+    position:absolute; z-index:2; right:12px; bottom:12px;
+    pointer-events:none;                 /* the tiles are the click target */
+    font-family:var(--font-mono);
+    font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--bone);
+    padding:5px 9px;
+    border:1px solid rgba(236,230,216,.32);
+    background:rgba(12,12,10,.74);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .work-card:hover .gallery-more{ border-color:var(--acid); color:var(--acid); }
+  /* one column on a phone — side by side these become letterbox slits */
+  @media (max-width:620px){
+    .work-frame.gallery{ grid-template-columns:1fr; }
+  }
 
   /* ============ BYLINE ============ */
   .byline{ border-bottom:1px solid var(--line); }
@@ -757,14 +799,7 @@
     margin:16px 0 0;
   }
 
-  .collage-tile.lightbox-trigger{
-    cursor:pointer;
-    background:var(--iron-2);
-    height:100%;
-    width:100%;
-  }
   .collage-tile.cover{ height:100%; width:100%; }
-  .collage-tile.lightbox-trigger img,
   .collage-tile.cover img{
     position:absolute; inset:0;
     max-width:none; max-height:none;
@@ -772,16 +807,6 @@
     object-fit:cover;
     padding:0;
   }
-  .collage-tile.lightbox-trigger .play{
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    z-index:1;
-    background:rgba(12,12,10,0.55);
-  }
-  .collage-tile.lightbox-trigger:hover .play,
-  .collage-tile.lightbox-trigger:focus-visible .play{
-    border-color:var(--acid); color:var(--acid);
-  }
-  .collage-tile.lightbox-trigger:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
   [data-lightbox-video], [data-lightbox-external]{ cursor:pointer; }
   .work-frame[data-lightbox-video]:focus-visible,
   .work-frame[data-lightbox-external]:focus-visible{ outline:2px solid var(--acid); outline-offset:-2px; }
@@ -1498,36 +1523,28 @@
              data-tags="Brand film &middot; Fresno &middot; 81 sec"
              data-label="Play the CVALT brand film">
         </div>
-        <div class="work-frame has-image cvalt-collage" style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:1px; background:var(--line);">
-          <div class="collage-tile lightbox-trigger" role="button" tabindex="0"
-               data-lightbox-video="assets/cvalt_reel.mp4" data-lightbox-poster="assets/cvalt_reel_poster.jpg"
-               data-lightbox-caption="CVALT — brand video, cut for the app launch." aria-label="Play the CVALT brand video">
-            <img src="assets/cvalt_reel_poster.jpg" alt="CVALT brand video, cover frame" width="540" height="958" loading="lazy">
-            <span class="play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-          </div>
-          <div class="collage-tile">
+        <!-- Six workstreams don't fit on a grid. Two previews carry the card;
+             the album carries the scope. -->
+        <div class="work-frame has-image gallery inset g-tall">
+          <div class="collage-tile cover">
             <img src="assets/cvalt_app.jpg" alt="CVALT: Weed Delivery app store listing" width="503" height="720" loading="lazy">
           </div>
-          <div class="collage-tile">
-            <img src="assets/cvalt_sticker.jpg" alt="Cannabis, Delivered sticker design produced for CVALT" width="562" height="1000" loading="lazy">
-          </div>
-          <div class="collage-tile cover">
-            <img src="assets/cvalt_alterlean.jpg" alt="Alter-Lean cannabis tincture, product packaging shot for CVALT" width="700" height="700" loading="lazy" style="object-position:70% center;">
-          </div>
-          <span class="reel-tag" style="left:16px; bottom:14px;">Shipped: the app, the packaging, the video</span>
-        </div>
-        <!-- The email & SMS system — the service behind the $4.6M line, and the one
-             the site had no picture of until now. -->
-        <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:3/2; margin-top:1px;">
           <div class="collage-tile cover">
             <img src="assets/cvalt_email_1.jpg" alt="CVALT campaign email: Cookies dual-chamber vape launch" width="794" height="1123" loading="lazy" style="object-position:center top;">
           </div>
-          <div class="collage-tile cover">
-            <img src="assets/cvalt_email_2.jpg" alt="CVALT campaign email: product detail and potency breakdown" width="794" height="1123" loading="lazy" style="object-position:center top;">
-          </div>
-          <span class="reel-tag" style="left:16px; bottom:14px;">The email &amp; SMS system &mdash; 66% to 86% delivered</span>
+          <div class="tile-rest" data-lightbox-video="assets/cvalt_reel.mp4" data-lightbox-poster="assets/cvalt_reel_poster.jpg"
+               data-lightbox-caption="CVALT &mdash; brand video, cut for the app launch."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_email_2.jpg"
+               data-lightbox-caption="CVALT campaign email: product detail and potency breakdown."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_wcc.jpg"
+               data-lightbox-caption="CVALT &times; West Coast Cure &mdash; same-day delivery ad creative."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_sticker.jpg"
+               data-lightbox-caption="&ldquo;Cannabis, Delivered&rdquo; sticker run produced for CVALT."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_alterlean.jpg"
+               data-lightbox-caption="Alter-Lean cannabis tincture &mdash; packaging and product shot."></div>
+          <div class="tile-rest" data-lightbox-image="assets/cvalt_floracal.jpg"
+               data-lightbox-caption="Floracal Farms pre-roll &mdash; product photography for the CVALT catalog."></div>
+          <span class="reel-tag">The app, the packaging, the campaigns</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Brand Strategy &middot; Email &amp; SMS Systems &middot; Content <em class="mark-selected">Selected</em></span>
@@ -1554,7 +1571,7 @@
       </article>
 
       <article class="work-card featured">
-        <div class="work-frame ar-wide has-image" role="button" tabindex="0"
+        <div class="work-frame reel-tall has-image" role="button" tabindex="0"
              data-lightbox-video="assets/kannabis_reel.mp4" data-lightbox-poster="assets/kannabis_reel_poster.jpg"
              data-lightbox-caption="Kannabis Delivery — interactive drop-day reel." aria-label="Play the Kannabis Delivery reel">
           <img src="assets/kannabis_reel_poster.jpg" alt="Kannabis Delivery interactive reel, cover frame" width="540" height="960" loading="lazy">
@@ -1577,20 +1594,22 @@
            swap it in as a lightbox video the way CVALT and Kannabis Delivery use one — it belongs
            on this card more than the two static images do. -->
       <article class="work-card span-3">
-        <div class="work-frame has-image" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); aspect-ratio:4/3;">
+        <div class="work-frame has-image gallery g-sq">
           <div class="collage-tile cover">
-            <img src="assets/bosky_genetics.jpg" alt="Bosky Genetics grow room, first harvest, worker inspecting the canopy" width="1000" height="562" loading="lazy" style="object-position:25% 38%;">
-          </div>
-          <div class="collage-tile cover">
-            <img src="assets/bosky_jar.jpg" alt="Bosky Genetics jar, product photography" width="700" height="934" loading="lazy">
+            <img src="assets/bosky_neon.jpg" alt="Bosky Genetics product under the neon skull sign" width="933" height="1400" loading="lazy" style="object-position:center 40%;">
           </div>
           <div class="collage-tile cover">
             <img src="assets/bosky_macro.jpg" alt="Bosky Genetics macro: trichome detail on a finished flower" width="1400" height="933" loading="lazy">
           </div>
-          <div class="collage-tile cover">
-            <img src="assets/bosky_harvest.jpg" alt="Bosky Genetics first licensed harvest, full canopy under lights" width="1400" height="788" loading="lazy">
-          </div>
-          <span class="reel-tag" style="left:16px; bottom:14px;">First harvest, grow room, macro and product</span>
+          <div class="tile-rest" data-lightbox-image="assets/bosky_harvest.jpg"
+               data-lightbox-caption="Bosky Genetics &mdash; first licensed harvest, full canopy under lights."></div>
+          <div class="tile-rest" data-lightbox-image="assets/bosky_grow2.jpg"
+               data-lightbox-caption="Bosky Genetics &mdash; finished tops, days off the harvest."></div>
+          <div class="tile-rest" data-lightbox-image="assets/bosky_genetics.jpg"
+               data-lightbox-caption="Bosky Genetics &mdash; grow room, first harvest, inspecting the canopy."></div>
+          <div class="tile-rest" data-lightbox-image="assets/bosky_jar.jpg"
+               data-lightbox-caption="Bosky Genetics &mdash; jar, product photography."></div>
+          <span class="reel-tag">Neon, macro, grow room, product</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Video &middot; Photography &middot; Brand Documentation</span>
@@ -1604,24 +1623,19 @@
         </div>
       </article>
 
-      <!-- TODO: swap this single-frame reel tile for a 3-image collage (same pattern as the
-           CVALT card above) once the photo exports land — hero: candid toss/celebration shot at
-           the counter with the "Harvest Market 2026" screen behind it; second: ribbon-cutting
-           crowd shot; third: candid customer-at-the-counter interaction. See
-           junkyard-butcher-portfolio-case-studies.md for the full shot list. -->
       <article class="work-card span-3">
-        <!-- The three shots the old TODO asked for. Reel still to be encoded to R2. -->
-        <div class="work-frame ar-wide has-image" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--line);">
+        <!-- Every frame here is 3:2 off the film scan, so the tiles are 3:2 too.
+             Reel still to be encoded to R2. -->
+        <div class="work-frame has-image gallery g-wide">
           <div class="collage-tile cover">
             <img src="assets/pb_ribbon.jpg" alt="Premium Blossom grand opening, ribbon cutting with staff and crowd" width="1400" height="928" loading="lazy">
           </div>
           <div class="collage-tile cover">
             <img src="assets/pb_customer.jpg" alt="Premium Blossom customers at the counter on opening day" width="1400" height="928" loading="lazy">
           </div>
-          <div class="collage-tile cover">
-            <img src="assets/pb_mural.jpg" alt="Premium Blossom interior mural" width="1400" height="928" loading="lazy">
-          </div>
-          <span class="reel-tag" style="left:16px; bottom:14px;">Grand opening &mdash; shot on 35mm</span>
+          <div class="tile-rest" data-lightbox-image="assets/pb_mural.jpg"
+               data-lightbox-caption="Premium Blossom &mdash; the interior mural, shot on 35mm."></div>
+          <span class="reel-tag">Grand opening &mdash; shot on 35mm</span>
         </div>
         <div class="work-body">
           <span class="work-tag">Video &middot; 35mm Film &middot; Recap Content</span>
@@ -1637,7 +1651,7 @@
       </article>
 
       <article class="work-card featured">
-        <div class="work-frame ar-wide has-image" role="button" tabindex="0"
+        <div class="work-frame reel-tall has-image" role="button" tabindex="0"
              data-lightbox-external="https://www.instagram.com/farmfiend/reel/DG6wlCayIea/" data-lightbox-poster="assets/farmfiend_cover.jpg"
              data-lightbox-caption="Farm Fiend x Rich Kids on LSD — Telegram Ballroom, LA, March 2025. On Instagram." aria-label="Preview the Farm Fiend x Rich Kids on LSD reel">
           <img src="assets/farmfiend_cover.jpg" alt="Farm Fiend x Rich Kids on LSD tour stop, cover frame" width="281" height="500" loading="lazy">
@@ -1832,6 +1846,20 @@
       el.setAttribute('aria-label', 'Enlarge: ' + (img.getAttribute('alt') || 'image'));
     }
   );
+
+  // Each gallery says how much more the album holds. Counted at runtime from
+  // the card's real trigger list, so it can never drift from the markup.
+  Array.prototype.forEach.call(document.querySelectorAll('.gallery'), function(g){
+    var card  = g.closest('.work-card') || g;
+    var total = card.querySelectorAll('[data-lightbox-video], [data-lightbox-external], [data-lightbox-image]').length;
+    var shown = g.querySelectorAll('.collage-tile:not(.tile-rest)').length;
+    var rest  = total - shown;
+    if (rest < 1) return;
+    var badge = document.createElement('span');
+    badge.className = 'gallery-more';
+    badge.textContent = 'View all ' + total;
+    g.appendChild(badge);
+  });
 
   var triggers = document.querySelectorAll('[data-lightbox-video], [data-lightbox-external], [data-lightbox-image]');
   if (triggers.length) {

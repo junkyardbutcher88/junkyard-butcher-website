@@ -156,6 +156,33 @@ new name (`fix1.sh`, `fix2.sh`) rather than overwriting, and check the byte coun
 
 ---
 
+## Gallery
+
+**One or two previews, the rest in the album.** Decided 15 Sep 2026. CVALT had
+grown to three stacked frames — the reel, a four-tile collage, and a two-up email
+strip — 2,381px of card for one client. The fix isn't fewer images, it's fewer
+images *on the grid*: each card now shows its strongest one or two frames and every
+other frame in the set stays in the DOM as a lightbox trigger with `display:none`,
+picked up automatically by the album's existing per-card grouping. A "View all N"
+badge says what's behind the click. CVALT went 2,381px to 1,504px while its set grew
+from six items to eight; the whole work grid dropped 18%.
+
+**The tile carries the aspect ratio, not the frame.** Tiles are shaped to match the
+source photographs: `g-wide` (3:2) for landscape sets, `g-tall` (3:4) for portrait,
+`g-sq` (1:1) when a set mixes both. Premium Blossom's three frames are all 3:2 off
+the film scan and were being cropped into portrait slots — now they render at 1.50
+against a 1.51 source, which is no crop at all. Putting the ratio on the tile rather
+than the frame is what lets a card go single-column on a phone without the strip
+collapsing into a letterbox slit.
+
+**Full-bleed featured cards get matted, not cropped.** Two portrait tiles across a
+1,190px featured card are 800px tall on their own. `.inset` caps the grid at 640px
+and centres it, so the images keep their shape and the card keeps its height. Same
+treatment for `.reel-tall`: a 9:16 phone reel sitting in a 21:9 frame was showing
+about a tenth of the shot.
+
+---
+
 ## Open
 
 - Cannabis-only, or local culture brands including cannabis? There's a finished
