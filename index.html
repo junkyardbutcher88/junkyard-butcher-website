@@ -1297,6 +1297,7 @@
     text-transform:uppercase;
     margin:10px 0 0;
   }
+  .hire-title .cut{ color:var(--rust); }
   .hire-copy{
     margin:22px 0 0;
     max-width:56ch;
@@ -1364,24 +1365,6 @@
     font-size:0.72rem;
     letter-spacing:0.06em;
     color:var(--smoke);
-  }
-  .hire-fallback{
-    margin-top:26px;
-    max-width:720px;
-    padding:20px;
-    border:1px solid var(--rust);
-    display:flex; flex-direction:column; gap:10px;
-  }
-  .hire-fallback label{
-    font-family:var(--font-mono);
-    font-size:0.66rem; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--smoke);
-  }
-  .hire-fallback textarea{
-    background:transparent; border:1px solid var(--line-strong);
-    color:var(--bone); font-family:var(--font-mono);
-    font-size:0.82rem; line-height:1.6; padding:12px 13px;
-    width:100%; resize:vertical; border-radius:0;
   }
   @media (max-width:620px){
     .hire-form{ grid-template-columns:1fr; }
@@ -1475,7 +1458,7 @@
       <a href="#dig">The Dig</a>
       <a href="#services">What You Get</a>
       <a href="philosophy.html">Philosophy</a>
-      <a href="#hire">Hire</a>
+      <a href="#hire">Contact</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -1981,11 +1964,11 @@
   <section class="hire" id="hire">
     <div class="wrap hire-inner">
       <div class="eyebrow">Start a Conversation</div>
-      <h2 class="hire-title">Bring Me a <span class="cut">Job</span></h2>
+      <h2 class="hire-title">Cut to <span class="cut">Order</span></h2>
       <p class="hire-copy">
-        Tell me what you're working on and what's not landing. You get a reply from me &mdash; the
+        Tell me what you're building and what isn't landing. You get a reply from me &mdash; the
         person who'd do the work &mdash; inside two business days, with an honest read on whether
-        I'm the right call.
+        I'm the right fit. Nothing gets made off the rack.
       </p>
 
       <form class="hire-form" id="hire-form" novalidate>
@@ -2021,21 +2004,10 @@
         <div class="hire-actions">
           <button type="submit" class="link-cta primary" id="hire-submit">Send It &rarr;</button>
           <span class="hire-note">Or email <a href="mailto:hello@junkyardbutcher.com?subject=Junkyard%20Butcher%20%E2%80%94%20new%20job">hello@junkyardbutcher.com</a></span>
-          <a href="#join" class="link-cta quiet">Not ready? Take the work notes &rarr;</a>
+          <a href="#join" class="link-cta quiet">Not ready? Get the notes instead &rarr;</a>
         </div>
       </form>
       <p class="join-status" id="hire-status" role="status" aria-live="polite" hidden></p>
-
-      <!-- Shown only when there's no form backend, or the POST failed. The
-           message is never lost: it's here, selectable, with the draft link. -->
-      <div class="hire-fallback" id="hire-fallback" hidden>
-        <label for="hire-fallback-text">Your message</label>
-        <textarea id="hire-fallback-text" readonly rows="8"></textarea>
-        <div class="hire-actions">
-          <a class="link-cta primary" id="hire-fallback-open" href="mailto:hello@junkyardbutcher.com">Open it in mail &rarr;</a>
-          <button type="button" class="link-cta" id="hire-copy-btn">Copy the text</button>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -2076,10 +2048,10 @@
   <!-- The Block, reduced to one line. It was a bordered slab competing with
        the hire form for the same attention and winning on size alone. -->
   <div class="wrap foot-block" id="join">
-    <label for="email-input">Work notes, now and then</label>
+    <label for="email-input">Notes from the shop, now and then</label>
     <form class="foot-join" id="join-form" novalidate>
       <input id="email-input" type="email" name="email" placeholder="you@yourbrand.com" autocomplete="email" required>
-      <button type="submit" class="link-cta" id="join-submit">Get on the block &rarr;</button>
+      <button type="submit" class="link-cta" id="join-submit">Send them to me &rarr;</button>
     </form>
     <p class="join-status" id="join-status" role="status" aria-live="polite" hidden></p>
   </div>
@@ -2097,7 +2069,7 @@
       <a href="#dig">The Dig</a>
       <a href="#services">What You Get</a>
       <a href="philosophy.html">Philosophy</a>
-      <a href="#hire">Hire</a>
+      <a href="#hire">Contact</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
     </div>
     <div class="foot-copy">© 2026 Junkyard Butcher. Cut to order — never scraped, never templated.</div>
@@ -2348,39 +2320,16 @@
 
 
   // ---- HIRE FORM -------------------------------------------------------
-  // Delivery honesty rule: never tell someone their message arrived unless it
-  // demonstrably did. With no endpoint configured the only path is the
-  // visitor's own mail client, which can silently do nothing (no mail app, a
-  // locked-down browser, a webmail-only machine) -- so in that mode we hand
-  // them the composed message and say plainly that they have to send it.
-  // Set HIRE_ENDPOINT to a form backend (Formspree, Web3Forms) and the form
-  // switches to a real POST with a real receipt.
-  //
-  // Deliberately NOT Klaviyo: that API subscribes a profile to marketing, and
-  // someone asking for a quote has not consented to a newsletter.
+  // Posts to Formspree. On success the form is replaced by a receipt we can
+  // stand behind; on failure it stays exactly as the visitor filled it in,
+  // with the status line telling them to email instead. No second panel —
+  // their words are still in the fields, which is the only copy that matters.
   var HIRE_ENDPOINT = 'https://formspree.io/f/maeyaddy';
-
-
-  // "Book The Dig" should land on the form with the answer already picked.
-  Array.prototype.forEach.call(document.querySelectorAll('[data-prefill]'), function(a){
-    a.addEventListener('click', function(){
-      var want = a.getAttribute('data-prefill');
-      var sel  = document.getElementById('hire-need');
-      if (!sel) return;
-      Array.prototype.forEach.call(sel.options, function(o){
-        if (o.text.replace(/\s+/g,' ').trim() === want) sel.value = o.value || o.text;
-      });
-    });
-  });
 
   var hireForm = document.getElementById('hire-form');
   if (hireForm) {
     var hireStatus = document.getElementById('hire-status');
     var hireButton = document.getElementById('hire-submit');
-    var hireOut    = document.getElementById('hire-fallback');
-    var hireText   = document.getElementById('hire-fallback-text');
-    var hireOpen   = document.getElementById('hire-fallback-open');
-    var hireCopy   = document.getElementById('hire-copy-btn');
     var hireBusy   = false;
 
     var hSay = function(msg, tone){
@@ -2395,19 +2344,6 @@
     var emailish = function(v){
       var at = v.indexOf('@');
       return at > 0 && v.indexOf('.', at) > at + 1 && v.length > 5 && v.indexOf(' ') === -1;
-    };
-
-    var plain = function(f){
-      return 'Name:  ' + f.name  + '\n' +
-             'Brand: ' + f.brand + '\n' +
-             'Email: ' + f.email + '\n' +
-             'Needs: ' + (f.need || 'not specified') + '\n\n' +
-             f.message + '\n';
-    };
-    var mailUrl = function(f){
-      return 'mailto:hello@junkyardbutcher.com' +
-             '?subject=' + encodeURIComponent('New job — ' + f.brand) +
-             '&body='    + encodeURIComponent(plain(f));
     };
 
     hireForm.addEventListener('submit', function(e){
@@ -2433,20 +2369,6 @@
         return;
       }
 
-      // --- no backend: hand the message over, don't claim to have it --------
-      if (!HIRE_ENDPOINT) {
-        hireText.value = plain(f);
-        hireOpen.href  = mailUrl(f);
-        hireOut.hidden = false;
-        hSay('Almost — one more tap. Your mail app should have opened with this ready to go; ' +
-             'hit send and it’s with me. If nothing opened, copy the text below and send it to ' +
-             'hello@junkyardbutcher.com.', 'wait');
-        hireOut.scrollIntoView({ block: 'nearest' });
-        try { window.location.href = mailUrl(f); } catch (err) {}
-        return;
-      }
-
-      // --- real endpoint: a receipt we can actually stand behind ------------
       hireBusy = true;
       hireButton.disabled = true;
       hSay('Sending…', 'wait');
@@ -2460,7 +2382,7 @@
           email: f.email,
           need: f.need || 'not specified',
           message: f.message,
-          _subject: 'New job \u2014 ' + f.brand          // what lands in the inbox
+          _subject: 'New job — ' + f.brand          // what lands in the inbox
         })
       })
       .then(function(res){
@@ -2473,28 +2395,13 @@
         }
       })
       .catch(function(){
-        hireText.value = plain(f);
-        hireOpen.href  = mailUrl(f);
-        hireOut.hidden = false;
-        hSay('That didn’t go through on my end — not your fault. Copy the text below and ' +
-             'send it to hello@junkyardbutcher.com and I’ll pick it up there.', 'bad');
+        // Everything they typed is still sitting in the form. Say what to do,
+        // and don't pretend it arrived.
+        hSay('That didn’t send — my end, not yours. Try once more, or email it straight to ' +
+             'hello@junkyardbutcher.com and I’ll pick it up there.', 'bad');
       })
       .then(function(){ hireBusy = false; hireButton.disabled = false; });
     });
-
-    if (hireCopy) {
-      hireCopy.addEventListener('click', function(){
-        hireText.select();
-        var done = false;
-        try { done = document.execCommand('copy'); } catch (err) {}
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(hireText.value).then(function(){
-            hireCopy.textContent = 'Copied ✓';
-          }, function(){});
-        }
-        if (done) hireCopy.textContent = 'Copied ✓';
-      });
-    }
   }
 
   var joinForm = document.getElementById('join-form');
