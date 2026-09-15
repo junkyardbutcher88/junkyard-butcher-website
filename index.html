@@ -327,6 +327,14 @@
   .link-cta:hover::after, .link-cta:focus-visible::after{ right:0; }
   .link-cta.primary{ color:var(--acid); }
   .link-cta.quiet{ font-size:0.78rem; letter-spacing:0.06em; }
+  /* A 23px-tall text link is a coin toss with a thumb. On small screens the
+     hit area grows to ~44px; the underline follows the text, not the box. */
+  @media (max-width:760px){
+    .link-cta{ padding-top:11px; padding-bottom:15px; }
+    .link-cta::after{ bottom:11px; }
+    .nav-mark{ padding-block:10px; }
+    .toc li a, .foot-links a{ display:inline-block; padding-block:9px; }
+  }
 
   /* ============ MARQUEE ============ */
   .marquee{
@@ -511,6 +519,7 @@
     background:var(--rust);
     margin-top:20px;
   }
+  .note-tail{ display:block; margin-top:10px; color:var(--rust); }
   .section-note{
     max-width:360px;
     color:var(--bone-dim);
@@ -845,6 +854,23 @@
   }
   .work-desc{ color:var(--bone-dim); font-size:0.92rem; max-width:56ch; }
   .work-desc em{ font-style:normal; color:var(--acid); }
+  .work-principle{
+    margin-top:18px;
+    padding:12px 0 0 14px;
+    border-left:2px solid var(--rust);
+    display:flex; flex-direction:column; gap:5px;
+  }
+  .work-principle .pr-name{
+    font-family:var(--font-mono);
+    font-size:0.64rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--rust);
+  }
+  .work-principle .pr-how{
+    font-size:0.9rem; line-height:1.55;
+    color:var(--bone-dim);
+    max-width:54ch;
+  }
+  .work-principle .pr-how b{ color:var(--bone); font-weight:600; }
   .work-stats{
     display:flex; flex-wrap:wrap;
     gap:24px 40px;
@@ -991,6 +1017,11 @@
   .jb-btn svg{ width:14px; height:14px; display:block; fill:currentColor; }
   .jb-btn:hover{ border-color:var(--acid); color:var(--acid); }
   .jb-btn:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; }
+  /* 26px is fine for a cursor, not for a thumb */
+  @media (max-width:760px){
+    .jb-btn{ width:36px; height:36px; }
+    .jb-btn svg{ width:16px; height:16px; }
+  }
   .jb-time{
     font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.08em;
     color:var(--bone-dim); font-variant-numeric:tabular-nums; margin-right:auto;
@@ -1177,51 +1208,10 @@
   .founder-quote em{ font-style:normal; color:var(--acid); }
   .founder-body p{ color:var(--bone-dim); margin-top:18px; max-width:58ch; }
 
-  /* ============ JOIN / CTA ============ */
-  .join{ text-align:left; }
-  .join-inner{
-    border:1px solid var(--line-strong);
-    background:var(--iron-2);
-    padding:clamp(32px,6vw,64px);
-    position:relative;
-  }
   @media (max-width:760px){
     .founder{ padding-bottom:40px; }
-    #join{ padding-top:40px; }
-    .join-inner{ padding:28px; }
   }
-  .join-title{
-    font-family:var(--font-display);
-    font-size:clamp(2.4rem,7vw,5rem);
-    text-transform:uppercase;
-    line-height:0.92;
-  }
-  .join-title .cut{ color:var(--rust); }
-  .join-copy{
-    color:var(--bone-dim);
-    max-width:56ch;
-    margin-top:20px;
-    font-size:var(--fs-lead);
-  }
-  .join-form{
-    display:flex; flex-wrap:wrap;
-    gap:20px;
-    align-items:center;
-    margin-top:34px;
-    max-width:620px;
-  }
-  .join-form input[type="email"]{
-    flex:1 1 260px;
-    background:transparent;
-    border:1px solid var(--bone);
-    color:var(--bone);
-    font-family:var(--font-mono);
-    font-size:0.9rem;
-    padding:15px 16px;
-    min-width:0;
-  }
-  .join-form input::placeholder{ color:var(--smoke); }
-  .join-form button[disabled]{ opacity:0.45; cursor:not-allowed; }
+  /* status line, shared by the hire form and the footer signup */
   .join-status{
     font-family:var(--font-mono);
     font-size:0.86rem;
@@ -1235,14 +1225,6 @@
   .join-status.is-good{ border-left-color:var(--acid); color:var(--bone); }
   .join-status.is-bad{ border-left-color:var(--rust); color:var(--bone); }
   .join-status.is-wait{ border-left-color:var(--smoke); color:var(--smoke); }
-  .join-form input:focus-visible{ outline:2px solid var(--acid); outline-offset:2px; }
-  .join-alt{
-    margin-top:30px;
-    padding-top:26px;
-    border-top:1px solid var(--line);
-    display:flex; flex-wrap:wrap; gap:14px 32px;
-    align-items:center;
-  }
 
   /* ============ THE DIG ============
      The entry product. The Process section has always promised an audit;
@@ -1404,6 +1386,37 @@
   @media (max-width:620px){
     .hire-form{ grid-template-columns:1fr; }
   }
+
+  .foot-block{
+    padding-block:26px;
+    border-bottom:1px solid var(--line);
+    display:flex; flex-wrap:wrap; align-items:baseline;
+    gap:10px 26px;
+  }
+  .foot-block label{
+    font-family:var(--font-mono);
+    font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--smoke);
+    flex:none;
+  }
+  .foot-join{
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 22px;
+    flex:1 1 320px; min-width:0;
+  }
+  .foot-join input[type="email"]{
+    flex:1 1 220px; min-width:0;
+    background:transparent;
+    border:0; border-bottom:1px solid var(--line-strong);
+    border-radius:0;
+    color:var(--bone);
+    font-family:var(--font-mono);
+    font-size:0.86rem;
+    padding:7px 2px;
+  }
+  .foot-join input::placeholder{ color:var(--smoke); }
+  .foot-join input:focus-visible{ outline:none; border-bottom-color:var(--acid); }
+  .foot-join button[disabled]{ opacity:0.45; cursor:not-allowed; }
+  .foot-block .join-status{ flex:1 1 100%; margin-top:6px; }
 
   /* ============ FOOTER ============ */
   footer{
@@ -1732,6 +1745,7 @@
         Cannabis, mostly &mdash; the hardest place in marketing to stay legal and still be worth
         looking at. Carrier rules, platform bans, a county line that changes what you're allowed to
         say. That pressure is why the systems have to be good. The frameworks don't know what's in the jar.
+        <span class="note-tail">Each cut below names the principle that did the work.</span>
       </p>
     </div>
 
@@ -1797,6 +1811,10 @@
             2%-conversion list and turned it into $4.6M in platform-attributed revenue in a year, on about
             $22K in spend.
           </p>
+          <div class="work-principle">
+            <span class="pr-name">The 80/20 Hybrid, applied</span>
+            <span class="pr-how">Nothing new got made for the first month. The <b>list was the twenty percent</b> &mdash; already paid for, already opted in, and nobody had looked at it in a year. Cleaning it moved delivery from 66% to 86% before a single new campaign shipped.</span>
+          </div>
           <div class="work-stats">
             <div class="stat">
               <span class="stat-num">$4.6M</span>
@@ -1829,6 +1847,10 @@
             under a fortnight, sequenced as a funnel rather than twelve separate posts. Drop-day recaps fast
             enough that the people who missed it still felt like they'd been there.
           </p>
+          <div class="work-principle">
+            <span class="pr-name">The 7-11-4, built on purpose</span>
+            <span class="pr-how">Twelve reels wasn't a content quota, it was the <b>eleven touchpoints</b> stacked deliberately and sequenced across platforms, so the hours accumulate on the same person instead of scattering across twelve strangers.</span>
+          </div>
           <div class="work-stats">
             <div class="stat">
               <span class="stat-num">12 reels</span>
@@ -1872,6 +1894,11 @@
             walked away with real recognition from the biggest names in the space — and grew fast right after,
             on the strength of the product itself.
           </p>
+          <div class="work-principle">
+            <span class="pr-name">Dig before you buy</span>
+            <span class="pr-how">There was nothing to dig through yet, so the job was making the raw material: <b>document it while it's happening</b>, so that when the recognition arrives the proof of how they got there already exists.</span>
+          </div>
+
         </div>
       </article>
 
@@ -1898,6 +1925,11 @@
             film instead of digital, so it felt like family footage instead of an ad, plus recap videos that
             kept the same feeling going.
           </p>
+          <div class="work-principle">
+            <span class="pr-name">Dig before you buy</span>
+            <span class="pr-how">They already had the brand. The twenty percent was the community they'd built, so the job was <b>capturing it, not replacing it</b> &mdash; the discipline is knowing when the answer is to add nothing.</span>
+          </div>
+
           <blockquote class="work-quote">
             &ldquo;Thank you @JunkyardButcher for bringing this reel to life and capturing the spirit
             of our community.&rdquo;
@@ -1927,6 +1959,11 @@
             bag. Same rule behind every Junkyard Butcher project: keep the kit minimal, let the vision and the
             constraints drive the work, and bring in more gear only when a job actually calls for it.
           </p>
+          <div class="work-principle">
+            <span class="pr-name">Minimal gear, maximum intent</span>
+            <span class="pr-how">A crew and a camera package would have made it look like an ad. <b>The constraint was the creative decision</b> &mdash; one phone, one night, handheld, because that's what the room actually felt like.</span>
+          </div>
+
           <blockquote class="work-quote">
             &ldquo;Your video kicks ass&hellip; it&rsquo;s what I wanted.&rdquo;
             <cite>&mdash; Russ, Farm Fiend</cite>
@@ -2033,35 +2070,20 @@
     </div>
   </section>
 
-  <div class="cutline" aria-hidden="true"></div>
-
-  <!-- ============ JOIN ============ -->
-  <section class="wrap" id="join">
-    <div class="join-inner">
-      <div class="eyebrow">The Block</div>
-      <h2 class="join-title">Get On The Butcher's <span class="cut">Block</span></h2>
-      <p class="join-copy">
-        Work notes from inside the shop. What's working on live accounts before it's a tidy case study,
-        the frameworks as I'm actually using them, and first word when a spot on the calendar opens up.
-        Infrequent, and you can leave in one click.
-      </p>
-      <form class="join-form" id="join-form" novalidate>
-        <label for="email-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
-        <input id="email-input" type="email" name="email" placeholder="you@yourbrand.com" autocomplete="email" required>
-        <button type="submit" class="link-cta primary" id="join-submit">Get On →</button>
-      </form>
-      <p class="join-status" id="join-status" role="status" aria-live="polite" hidden></p>
-
-      <div class="join-alt">
-        <a href="#hire" class="link-cta quiet">Rather just hire me? Start a conversation →</a>
-        <a href="#work" class="link-cta quiet">Or see the work first →</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
+  <!-- The Block, reduced to one line. It was a bordered slab competing with
+       the hire form for the same attention and winning on size alone. -->
+  <div class="wrap foot-block" id="join">
+    <label for="email-input">Work notes, now and then</label>
+    <form class="foot-join" id="join-form" novalidate>
+      <input id="email-input" type="email" name="email" placeholder="you@yourbrand.com" autocomplete="email" required>
+      <button type="submit" class="link-cta" id="join-submit">Get on the block &rarr;</button>
+    </form>
+    <p class="join-status" id="join-status" role="status" aria-live="polite" hidden></p>
+  </div>
+
   <div class="wrap foot-grid">
     <div class="foot-mark">
       <svg class="jb-mark" viewBox="0 0 100 100" aria-hidden="true">
@@ -2336,7 +2358,7 @@
   //
   // Deliberately NOT Klaviyo: that API subscribes a profile to marketing, and
   // someone asking for a quote has not consented to a newsletter.
-  var HIRE_ENDPOINT = '';
+  var HIRE_ENDPOINT = 'https://formspree.io/f/maeyaddy';
 
 
   // "Book The Dig" should land on the form with the answer already picked.
@@ -2432,7 +2454,14 @@
       fetch(HIRE_ENDPOINT, {
         method: 'POST',
         headers: { 'content-type': 'application/json', 'accept': 'application/json' },
-        body: JSON.stringify(f)
+        body: JSON.stringify({
+          name: f.name,
+          brand: f.brand,
+          email: f.email,
+          need: f.need || 'not specified',
+          message: f.message,
+          _subject: 'New job \u2014 ' + f.brand          // what lands in the inbox
+        })
       })
       .then(function(res){
         if (res.ok || res.status === 200 || res.status === 202) {

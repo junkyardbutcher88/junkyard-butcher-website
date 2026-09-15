@@ -214,6 +214,12 @@
     margin:0;
   }
 
+  @media (max-width:760px){
+    .link-cta{ padding-top:11px; padding-bottom:15px; }
+    .link-cta::after{ bottom:11px; }
+    .nav-mark{ padding-block:10px; }
+    .toc li a, .foot-links a{ display:inline-block; padding-block:9px; }
+  }
   .breadcrumb{
     font-family:var(--font-mono);
     font-size:0.72rem;
@@ -230,6 +236,7 @@
     padding-block:clamp(40px,6vw,64px);
     display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px;
   }
+  .closing-actions{ display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; }
   .closing-cta h2{
     font-family:var(--font-display);
     font-size:clamp(1.8rem,4.5vw,3rem);
@@ -259,10 +266,10 @@
     </a>
     <div class="nav-links" id="nav-links">
       <a href="index.html#work">Work</a>
-      <a href="index.html#process">Process</a>
-      <a href="index.html#services">Services</a>
+      <a href="index.html#dig">The Dig</a>
+      <a href="index.html#services">What You Get</a>
       <a href="philosophy.html" aria-current="page">Philosophy</a>
-      <a href="index.html#hire">Join</a>
+      <a href="index.html#hire">Hire</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener">Instagram ↗</a>
     </div>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
@@ -449,22 +456,30 @@
 
       <article id="influences">
         <h2>Where This Comes From</h2>
-        <p>
-          Two influences show up constantly in how this business actually runs, not just how it talks
-          about itself.
+        <p class="lead">
+          Not from a book. From a skatepark and a job nobody meant to give me.
         </p>
         <p>
-          <strong>Chris Do</strong> — for treating creative work like an actual business instead of a
-          vanity project. Charging for value instead of hours, understanding the client's real problem
-          before proposing a solution, and taking the business side of "creative" as seriously as the
-          creative side. A lot of talented people undercharge and overdeliver until they burn out; that
-          framing is the antidote.
+          <strong>Skating.</strong> You pick a line, you commit to it, and most of the time you don't
+          land it. Then you get up and go again, and the twentieth attempt looks effortless to anyone
+          who arrived late. That's the whole job. The work that looks like it came easily is the work
+          that got run at the most times, and the willingness to look stupid in the middle of it is
+          not a personality trait — it's the actual skill.
         </p>
         <p>
-          <strong>Seth Godin</strong> — for permission marketing, the smallest viable audience, and the
-          idea that "remarkable" means literally worth making a remark about. Godin's whole body of work
-          argues against interrupting strangers and for earning attention from people who actually opted
-          in. The community-over-audience approach described above is that idea applied directly.
+          <strong>Being the contractor who ended up running the department.</strong> I went into CVALT
+          to do one thing and came out responsible for the whole system — the app listing, the
+          packaging, the sends, the brand. Not because I pitched for it, but because I was the only
+          one who could see all of it at once. Four vendors had four views of the same business and
+          none of them had the full picture, so nobody could tell which twenty percent was carrying
+          the other eighty. That's where the frameworks on this page come from: not theory, but the
+          specific experience of being the only person in the room who could see the whole thing.
+        </p>
+        <p>
+          <strong>Junkyards.</strong> Every one I've been in is full of things that still run, priced
+          as scrap because nobody bothered to check. Most brands are the same. The instinct to go
+          looking before going shopping isn't frugality — it's that what you already built is the only
+          material nobody else can copy.
         </p>
       </article>
 
@@ -530,7 +545,10 @@
   <section class="wrap">
     <div class="closing-cta">
       <h2>Ready to <span style="color:var(--acid);">dig in?</span></h2>
-      <a href="index.html#hire" class="link-cta primary">Get on the Butcher's Block →</a>
+      <div class="closing-actions">
+        <a href="index.html#hire" class="link-cta primary">Start a conversation →</a>
+        <a href="index.html#dig" class="link-cta">The Dig — $1,500 →</a>
+      </div>
     </div>
   </section>
 
@@ -547,8 +565,9 @@
     </div>
     <div class="foot-links">
       <a href="index.html#work">Work</a>
-      <a href="index.html#process">Process</a>
-      <a href="index.html#services">Services</a>
+      <a href="index.html#dig">The Dig</a>
+      <a href="index.html#services">What You Get</a>
+      <a href="index.html#hire">Hire</a>
       <a href="https://www.instagram.com/junkyardbutcher/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
     </div>
     <div class="foot-copy">© 2026 Junkyard Butcher. Cut to order — never scraped, never templated.</div>
