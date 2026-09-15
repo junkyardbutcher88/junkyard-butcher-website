@@ -59,6 +59,25 @@ sitting on the frame — this is the detail that makes the player ours.
 over ~1s. Also means an unplayed tile doesn't compete with the page, so a column of
 reels has hierarchy instead of noise.
 
+**Mono until engaged — site-wide, not just the player.** Extended 15 Sep 2026. Every
+still and every reel poster rests desaturated; colour appears only in the lightbox and
+in a playing reel. Clicking a photo enlarges it in full colour (`object-fit: contain`,
+so the whole frame shows rather than a crop). Rationale: with one greyed video and
+everything else in colour it read as a bug on the CVALT card. Applied to everything it
+becomes a rule — colour is the reward for opening something, and a wall of tiles reads
+as one system instead of a colour grid.
+
+Stills are wired as lightbox triggers **in JS, not in markup** — any `.collage-tile`,
+`.work-frame.has-image` or `.founder-frame` with a *direct* child `<img>` and no existing
+`data-lightbox-*` gets `data-lightbox-image` on load, with the caption taken from its alt
+text. Grid wrappers are skipped automatically because their images are nested, not direct
+children. New tiles are covered without being hand-tagged.
+
+Known tension: at rest the whole page is greyscale, so someone who only scrolls never
+sees the colour work. Accepted deliberately — the alternative (colour on hover) softens
+exactly the effect we want, and doesn't exist on mobile anyway. Revisit if the work
+section starts reading as drab rather than deliberate.
+
 **Class prefix is `jb-` but the play button is `.jb-cut`.** `.jb-mark` was already taken
 by the site's own nav/footer monogram — using it in the player absolutely-positioned
 those monograms into the middle of the page. Check for collisions before adding classes.
