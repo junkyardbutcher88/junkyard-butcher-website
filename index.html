@@ -987,6 +987,14 @@
   /* Stills reward a cursor pass — they're the things that open.
      Reels stay mono until they actually play: hovering a reel tells you
      nothing, pressing play is the commitment worth paying colour for. */
+  /* The frame's grain (::before) and bottom gradient (::after) span the whole
+     frame and were eating the pointer — tiles underneath never saw hover OR
+     click. They are decoration; they must never take pointer events. */
+  .work-frame::before,
+  .work-frame::after,
+  .founder-frame::before,
+  .founder-frame::after{ pointer-events:none; }
+
   .is-still img{ transition:filter .35s ease; }
   @media (hover:hover){
     .is-still:hover img{ filter:none; }
